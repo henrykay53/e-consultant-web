@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+}
+
+button {
+
+  background-color: rgb(147, 10, 10);
+  /* cursor: pointer; */
+
+}
+
+button:hover {
+  cursor: pointer;
+  
+}
+
+
+
+
