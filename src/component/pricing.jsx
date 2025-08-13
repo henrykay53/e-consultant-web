@@ -9,6 +9,8 @@ const Pricing = () => {
     },
     {
       name: "Standard",
+
+      
       price: "₦100,000",
       description: "Ideal for family homes.",
       highlight: true,

@@ -1,14 +1,8 @@
 
-
-
-
-
-'use client';
-import React from "react";
-
 import { ShieldCheck, Phone, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { professionalImg } from "../assets/images";
 
 const Hero = () => {
 
@@ -74,7 +68,7 @@ const Hero = () => {
             <div className="relative w-full max-w-md bg-white rounded-2xl shadow-lg overflow-hidden">
               <img
                 alt="technician"
-                src="src/assets/images/professional.jpg"
+                src={professionalImg}
                 className="w-full h-full object-cover"
               />
               <div className="absolute bottom-0 w-full bg-black bg-opacity-50 text-white p-3 text-xs">
