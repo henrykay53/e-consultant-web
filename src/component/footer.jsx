@@ -1,7 +1,15 @@
 'use client';
+import { useNavigate } from "react-router-dom";
 import { Phone, Mail, MapPin } from 'lucide-react';
 
 const Footer = () => {
+  const navigate = useNavigate();
+
+  const handleNavigation = (path) => {
+    navigate(path);
+    window.scrollTo(0, 0); // Scroll to top on navigation
+  };
+
   return (
     <footer className="bg-gray-900 text-gray-300 h-full">
       <div className="max-w-7xl mx-auto px-6 py-12">
@@ -19,12 +27,20 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold text-white mb-4">Quick Links</h3>
             <ul className="space-y-2 text-sm">
-              <li><a href="/" className="hover:text-red-600 transition-colors">Home</a></li>
-              <li><a href="/services" className="hover:text-red-600 transition-colors">Services</a></li>
-              <li><a href="/pricing" className="hover:text-red-600 transition-colors">Pricing</a></li>
-              <li><a href="/about" className="hover:text-red-600 transition-colors">About Us</a></li>
-              <li><a href="/blog" className="hover:text-red-600 transition-colors">Blog</a></li>
-              <li><a href="/contact" className="hover:text-red-600 transition-colors">Contact</a></li>
+              {["/", "/services", "/pricing", "/about", "/blog", "/contact"].map((path, idx) => (
+                <li
+                  key={idx}
+                  className="hover:text-red-600 transition-colors cursor-pointer"
+                  onClick={() => handleNavigation(path)}
+                >
+                  {path === "/" ? "Home" :
+                   path === "/services" ? "Services" :
+                   path === "/pricing" ? "Pricing" :
+                   path === "/about" ? "About Us" :
+                   path === "/blog" ? "Blog" :
+                   path === "/contact" ? "Contact" : ""}
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -32,12 +48,21 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold text-white mb-4">Our Services</h3>
             <ul className="space-y-2 text-sm">
-              <li><a href="/services/termite-treatment" className="hover:text-red-600 transition-colors">Termite Treatment</a></li>
-              <li><a href="/services/rodent-removal" className="hover:text-red-600 transition-colors">Rodent Control</a></li>
-              <li><a href="/services/cockroach-control" className="hover:text-red-600 transition-colors">Cockroach Control</a></li>
-              <li><a href="/services/bed-bug-treatment" className="hover:text-red-600 transition-colors">Bed Bug Treatment</a></li>
-              <li><a href="/services/fumigation" className="hover:text-red-600 transition-colors">Home & Office Fumigation</a></li>
-
+              {[
+                { path: "/services/termite-treatment", label: "Termite Treatment" },
+                { path: "/services/rodent-removal", label: "Rodent Control" },
+                { path: "/services/cockroach-control", label: "Cockroach Control" },
+                { path: "/services/bed-bug-treatment", label: "Bed Bug Treatment" },
+                { path: "/services/fumigation", label: "Home & Office Fumigation" },
+              ].map((service, idx) => (
+                <li
+                  key={idx}
+                  className="hover:text-red-600 transition-colors cursor-pointer"
+                  onClick={() => handleNavigation(service.path)}
+                >
+                  {service.label}
+                </li>
+              ))}
             </ul>
           </div>
 

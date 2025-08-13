@@ -7,3 +7,10 @@ import professionalImg from "./professional.jpg";
 
 // export them as named exports
 export { contactImg, ecoImg, fumigateImg, termiteImg, professionalImg};
+
+
+
+
+
+
+
