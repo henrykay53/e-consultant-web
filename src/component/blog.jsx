@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { blogPosts } from "../data";
 
 const BlogList = () => {
   const navigate = useNavigate();
+  const [visibleCount, setVisibleCount] = useState(3);
+
+  const handleShowMore = () => {
+    setVisibleCount(blogPosts.length);
+  };
 
   return (
     <main className="max-w-6xl mx-auto px-4 py-12">
@@ -18,7 +23,7 @@ const BlogList = () => {
 
       {/* Blog Grid */}
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {blogPosts.map((post) => (
+        {blogPosts.slice(0, visibleCount).map((post) => (
           <article
             key={post.id}
             className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow"
@@ -50,6 +55,20 @@ const BlogList = () => {
           </article>
         ))}
       </section>
+
+      {/* Show More Button */}
+      {visibleCount < blogPosts.length && (
+        <div className="text-center mt-10">
+          <motion.button
+            onClick={handleShowMore}
+            className="px-5 py-3 rounded-md text-sm text-white bg-gray-800 hover:bg-gray-900 transition-colors"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Show More
+          </motion.button>
+        </div>
+      )}
     </main>
   );
 };

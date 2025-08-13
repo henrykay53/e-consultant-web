@@ -4,10 +4,21 @@ import { motion } from "framer-motion";
 import Form from "./form";
 import { services } from "../data";
 
+// Lucide icons
+import { Bug, ShieldCheck, Home, Trees, SprayCan, PawPrint } from "lucide-react";
+
+// Icon mapping
+const iconMap = {
+  general: Bug,
+  termite: ShieldCheck,
+  home: Home,
+  outdoor: Trees,
+  disinfection: SprayCan,
+  petSafe: PawPrint,
+};
+
 const ServiceDetail = () => {
   const { id } = useParams();
-  console.log("id", id);
-  
   const navigate = useNavigate();
   const service = services.find((x) => x.id === id);
 
@@ -19,11 +30,16 @@ const ServiceDetail = () => {
     );
   }
 
+  // Get icon component based on service.icon value
+  const Icon = iconMap[service.icon] || Bug;
+
   return (
     <main className="max-w-4xl mx-auto px-4 py-10">
-      <div className="flex justify-between items-start">
+      <div className="flex items-center gap-4">
+        <div className="w-12 h-12 bg-green-100 text-green-700 rounded-lg flex items-center justify-center">
+          <Icon size={24} />
+        </div>
         <h2 className="text-2xl font-semibold">{service.title}</h2>
-        
       </div>
 
       <p className="mt-4 text-gray-700">{service.details}</p>
@@ -59,21 +75,14 @@ const ServiceDetail = () => {
       </div>
 
       <div className="mt-6">
-        {/* <div
+        <motion.button
           onClick={() => navigate("/services")}
-          className="px-4 py-2 bg-red-800 text-white text-center w-[20%] rounded"
+          className="px-3 py-2 mb-5 rounded-md text-sm text-white bg-red-800 hover:bg-red-900 transition-colors"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
-          Back to services
-        </div> */}
-
-         <motion.button
-                onClick={() => navigate("/services")}
-                className="px-3 py-2 mb-5 rounded-md text-sm text-white bg-red-800 hover:bg-red-900 transition-colors"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-            >
-                ← Back to services
-            </motion.button>
+          ← Back to services
+        </motion.button>
       </div>
     </main>
   );

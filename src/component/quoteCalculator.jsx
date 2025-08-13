@@ -9,7 +9,7 @@ const QuoteCalculator = ()=> {
     let base = 8000
     if (property === 'house') base += 8000
     if (size === 'large') base += 15000
-    if (pest === 'termite') base += 15000
+    if (pest === 'termite') base += 1500
     return base
   }
 
