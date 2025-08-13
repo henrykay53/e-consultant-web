@@ -71,7 +71,7 @@ const Header = () => {
             {/* Desktop Actions */}
             <div className="hidden md:flex items-center space-x-3">
               <motion.a
-                href="tel:+2348000000000"
+                href="tel:+2349056981893"
                 className="px-4 py-2 border rounded-md text-sm font-medium bg-green-50 border-green-200 text-green-700"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -148,16 +148,16 @@ const Header = () => {
             {/* Contact Info */}
             <div className="space-y-3 text-sm">
               <a
-                href="tel:+2348000000000"
+                href="tel:+2349056981893"
                 className="flex items-center gap-2 text-gray-700 hover:text-red-600"
               >
-                <Phone size={16} /> +234 800 000 0000
+                <Phone size={16} /> 09056981893
               </a>
               <a
-                href="mailto:info@econsultantsglobaltiija.ng"
+                href="mailto:econsultantglobaltiija@gmail.com"
                 className="flex items-center gap-2 text-gray-700 hover:text-red-600"
               >
-                <Mail size={16} /> info@econsultantsglobaltiija.ng
+                <Mail size={16} /> econsultantglobaltiija@gmail.com
               </a>
             </div>
           </div>

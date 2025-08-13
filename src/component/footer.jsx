@@ -19,7 +19,7 @@ const Footer = () => {
           <div>
             <h2 className="text-2xl font-bold text-red-500">E Consultants</h2>
             <p className="mt-2 text-sm text-gray-400">
-              Licensed fumigation & pest control services across Lagos, keeping homes & businesses safe since 2010.
+              Licensed fumigation & pest control services across Lagos and Nigeria, keeping homes & businesses safe since 1995.
             </p>
           </div>
 
@@ -72,19 +72,19 @@ const Footer = () => {
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-2">
                 <Phone size={16} className="text-red-600" />
-                <a href="tel:+2348000000000" className="hover:text-red-600 transition-colors">
-                  +234 800 000 0000
+                <a href="tel:+2349056981893" className="hover:text-red-600 transition-colors">
+                  09056981893
                 </a>
               </li>
               <li className="flex items-center gap-2">
                 <Mail size={16} className="text-red-600" />
-                <a href="mailto:info@econsultantsglobaltiija.ng" className="hover:text-green-500 transition-colors">
-                  info@econsultantsglobaltiija.ng
+                <a href="mailto:econsultantglobaltiija@gmail.com" className="hover:text-green-500 transition-colors">
+                  econsultantglobaltiija@gmail.com
                 </a>
               </li>
               <li className="flex items-center gap-2">
                 <MapPin size={16} className="text-red-600" />
-                <span>Lagos, Nigeria</span>
+                <span>Good Homes Estate, Ajah, Lagos</span>
               </li>
             </ul>
           </div>
@@ -95,7 +95,7 @@ const Footer = () => {
 
         {/* Bottom Section */}
         <div className="text-center text-xs text-gray-500">
-          © {new Date().getFullYear()} E Consultants — All rights reserved.
+          © {new Date().getFullYear()} E Consultants Global Tiija LTD — All rights reserved.
         </div>
       </div>
     </footer>
