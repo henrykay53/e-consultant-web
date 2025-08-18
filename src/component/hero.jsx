@@ -11,7 +11,7 @@ const Hero = () => {
     <section className="bg-gradient-to-b from-green-50 to-white">
       <div className="max-w-7xl mx-auto px-4 py-12 sm:py-20">
         <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-70">
-          
+
           {/* Left Content */}
           <motion.div
             className="w-full lg:w-1/2"
@@ -20,12 +20,12 @@ const Hero = () => {
             transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <h1 className="text-4xl sm:text-6xl  font-extrabold text-gray-900 leading-tight">
-              Fast, Safe & <span className="text-green-700">Guaranteed</span> Pest Control in Lagos
+              Fast, Safe & <span className="text-green-700">Guaranteed</span> Pest Control in Lagos.
             </h1>
 
             <h2 className="text-xl text-gray-700 mt-3">
-  Trusted fumigation and pest control services in Lagos, Nigeria
-</h2>
+              Trusted fumigation and pest control services in Lagos, Nigeria
+            </h2>
 
             <p className="mt-4 text-lg text-gray-600 max-w-xl">
               Get rid of pests quickly and safely. Same-day response available — child & pet-friendly treatments.
@@ -60,7 +60,7 @@ const Hero = () => {
               </span>
             </div>
 
-         
+
           </motion.div>
 
           {/* Right Image */}

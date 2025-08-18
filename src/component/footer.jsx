@@ -1,6 +1,5 @@
-'use client';
 import { useNavigate } from "react-router-dom";
-import { Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, Mail, MapPin, Instagram, Facebook, Linkedin } from 'lucide-react';
 
 const Footer = () => {
   const navigate = useNavigate();
@@ -19,7 +18,8 @@ const Footer = () => {
           <div>
             <h2 className="text-2xl font-bold text-red-500">E Consultants Global Tiija</h2>
             <p className="mt-2 text-sm text-gray-400">
-              Licensed fumigation & pest control services across Lagos and Nigeria, keeping homes & businesses safe since 2000.
+              Licensed fumigation & pest control services across Lagos and Nigeria, 
+              keeping homes & businesses safe since 2000.
             </p>
           </div>
 
@@ -87,6 +87,34 @@ const Footer = () => {
                 <span>Good Homes Estate, Ajah, Lagos</span>
               </li>
             </ul>
+
+            {/* Social Media */}
+            <div className="flex gap-4 mt-6">
+              <a
+                href="https://instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-red-600 transition-colors"
+              >
+                <Instagram size={20} />
+              </a>
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-red-600 transition-colors"
+              >
+                <Facebook size={20} />
+              </a>
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-red-600 transition-colors"
+              >
+                <Linkedin size={20} />
+              </a>
+            </div>
           </div>
         </div>
 
