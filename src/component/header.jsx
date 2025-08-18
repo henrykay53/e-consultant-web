@@ -39,7 +39,7 @@ const Header = () => {
 
             {/* Desktop Nav */}
             <motion.div
-              className="hidden md:flex items-center space-x-6 ml-6 text-sm"
+              className="hidden md:flex items-center space-x-6 ml-6 "
               initial="hidden"
               animate="visible"
               variants={{
@@ -60,7 +60,7 @@ const Header = () => {
                 >
                   <Link
                     to={link.path}
-                    className="hover:text-red-800 transition-colors"
+                    className="hover:text-red-800 font-semibold transition-colors "
                   >
                     {link.label}
                   </Link>
@@ -105,7 +105,7 @@ const Header = () => {
         <div className="fixed inset-0 z-50 flex">
           {/* Overlay */}
           <div
-            className="fixed inset-0 bg-gray-500 bg-opacity-10"
+            className="fixed inset-0"
             onClick={() => setIsOpen(false)}
           ></div>
 

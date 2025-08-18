@@ -4,12 +4,12 @@ import ServicesPreview from "./service";
 import WhyChoose from "./whyChooseUs";
 import Testimonials from "./testimonials";
 
-const Home = ({ navigate }) => {
+const Home = () => {
   return (
     <main>
-      <Hero navigate={navigate} />
+      <Hero  />
       <TrustBadges />
-      <ServicesPreview navigate={navigate} />
+      <ServicesPreview  />
       <WhyChoose />
       <Testimonials />
     </main>

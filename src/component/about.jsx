@@ -29,78 +29,83 @@ const About = () => {
         </title>
         <meta
           name="description"
-          content="E Consultants Global Tiija LTD is a licensed pest control and fumigation company in Lagos, Nigeria. We specialize in safe, eco-friendly, and effective pest management for homes and businesses."
+          content="Learn about E Consultants Global Tiija LTD, a licensed pest control and fumigation company in Lagos, Nigeria. We provide eco-friendly, government-approved pest solutions for homes, offices, and industries."
         />
         <meta
           name="keywords"
-          content="pest control Lagos, fumigation Lagos, eco-friendly pest control, licensed pest control Nigeria, termite control, rodent control, E Consultants Global Tiija"
+          content="pest control Lagos, fumigation Lagos, eco-friendly fumigation Nigeria, licensed pest control company, termite treatment Lagos, rodent extermination Nigeria"
         />
       </Helmet>
 
       {/* Intro Section */}
-      <section className="text-center mb-12">
-        <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
-          About E Consultants Global Tiija LTD
+      <section className="text-center mb-14">
+        <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900">
+          About <span className="text-red-700">E Consultants Global Tiija LTD</span>
         </h1>
-        <p className="text-lg text-gray-600 mt-4 max-w-3xl mx-auto leading-relaxed">
-          E Consultants Global Tiija LTD is a{" "}
-          <strong>licensed fumigation and pest control company in Lagos, Nigeria</strong>,
-          committed to delivering safe, eco-friendly, and long-lasting pest solutions for
-          residential, commercial, and industrial spaces. With a team of certified experts,
-          we combine modern pest management technology with unmatched customer service.
+        <p className="text-lg text-gray-600 mt-5 max-w-3xl mx-auto leading-relaxed">
+          At <strong>E Consultants Global Tiija LTD</strong>, we are a{" "}
+          <strong>licensed fumigation and pest control company in Lagos, Nigeria</strong>.
+          Our goal is to protect homes, offices, and industries with{" "}
+          <span className="font-semibold">eco-friendly, safe, and long-lasting pest management solutions</span>.
+          With certified technicians and state-of-the-art equipment, we ensure you enjoy a pest-free environment.
         </p>
       </section>
 
       {/* Features Section */}
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-        <article className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-all">
+      <section
+        aria-label="Company Features"
+        className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20"
+      >
+        <article className="bg-white p-8 rounded-2xl shadow-md hover:shadow-lg transition-all">
           <h2 className="text-xl font-semibold text-gray-900">Our Mission</h2>
           <p className="text-gray-600 mt-3 leading-relaxed">
-            To protect homes, businesses, and public spaces from harmful pests while
-            ensuring the health, safety, and peace of mind of our clients.
+            To deliver safe, effective, and eco-friendly pest control solutions
+            that protect lives, property, and the environment while ensuring
+            peace of mind for our clients.
           </p>
         </article>
 
-        <article className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-all">
+        <article className="bg-white p-8 rounded-2xl shadow-md hover:shadow-lg transition-all">
           <h2 className="text-xl font-semibold text-gray-900">Certifications & Compliance</h2>
           <p className="text-gray-600 mt-3 leading-relaxed">
-            We are fully licensed by Nigerian regulatory authorities, insured for your safety,
-            and use only government-approved, eco-friendly pest control products.
+            We are licensed by Nigerian regulatory authorities, insured for your safety,
+            and use only <strong>government-approved, eco-friendly products</strong> that
+            meet global best practices.
           </p>
         </article>
 
-        <article className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-all">
+        <article className="bg-white p-8 rounded-2xl shadow-md hover:shadow-lg transition-all">
           <h2 className="text-xl font-semibold text-gray-900">Safety & Eco-Friendliness</h2>
           <p className="text-gray-600 mt-3 leading-relaxed">
-            We prioritize safe pest control methods, offering eco-friendly treatment options
-            and clear guidance on safe re-entry after fumigation.
+            Our treatments prioritize human health, pets, and the environment. We provide clear
+            re-entry guidelines to ensure safety after every fumigation service.
           </p>
         </article>
       </section>
 
       {/* Counter Section */}
-      <section aria-label="Company Achievements" className="mb-16">
+      <section aria-label="Company Achievements" className="mb-20">
         <AboutUsCounter />
       </section>
 
       {/* Meet the Team */}
-      <section className="text-center">
-        <h2 className="text-3xl font-bold text-gray-900">Meet Our Experts</h2>
-        <p className="text-gray-600 mt-3 max-w-2xl mx-auto leading-relaxed">
-          Our team is made up of highly trained, certified professionals with years of
-          experience in pest control, customer service, and operations.
+      <section aria-label="Meet Our Experts" className="text-center">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Meet Our Experts</h2>
+        <p className="text-gray-600 mt-4 max-w-2xl mx-auto leading-relaxed">
+          Our team consists of trained, certified, and passionate professionals dedicated
+          to protecting your space from harmful pests while providing excellent customer service.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 mt-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 mt-10">
           {team.map((member, index) => (
             <article
               key={index}
-              className="bg-white rounded-xl shadow-sm hover:shadow-md transition-all p-6 text-center"
+              className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-all p-6 text-center"
             >
               <figure>
                 <img
                   src={member.img}
-                  alt={`${member.name} - ${member.role}`}
+                  alt={`${member.name}, ${member.role}`}
                   className="w-28 h-28 rounded-full mx-auto object-cover border-4 border-gray-100"
                 />
                 <figcaption className="mt-4">
@@ -117,3 +122,4 @@ const About = () => {
 };
 
 export default About;
+

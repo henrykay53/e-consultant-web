@@ -29,7 +29,7 @@ const WhyChoose = () => {
         <div className="relative group">
           <img
             src={teamImage}
-            alt="Professional fumigation team"
+            alt="Professional fumigation team in Lagos providing pest control services"
             className="rounded-2xl shadow-lg w-full h-72 md:h-96 object-cover transform transition-transform duration-500 group-hover:scale-105"
           />
           <div className="absolute inset-0 rounded-2xl bg-green-900/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
@@ -37,9 +37,9 @@ const WhyChoose = () => {
 
         {/* Right Content */}
         <div>
-          <h3 className="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 leading-tight">
             Why Homeowners & Businesses Trust Us
-          </h3>
+          </h2>
           <p className="mt-4 text-gray-600 leading-relaxed">
             We’ve built our reputation on delivering fast, safe, and guaranteed pest control solutions. 
             From your home to your workplace, we ensure your space stays pest-free without compromising safety.
@@ -56,11 +56,7 @@ const WhyChoose = () => {
             ))}
           </ul>
 
-          <div className="mt-10">
-            <button className="px-6 py-3 bg-green-600 text-white rounded-lg font-medium shadow-md hover:bg-green-700 hover:shadow-lg active:scale-95 transition-all duration-300">
-              Book Your Service
-            </button>
-          </div>
+        
         </div>
       </div>
     </section>

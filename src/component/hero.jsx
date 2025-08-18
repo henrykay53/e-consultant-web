@@ -22,6 +22,11 @@ const Hero = () => {
             <h1 className="text-4xl sm:text-6xl  font-extrabold text-gray-900 leading-tight">
               Fast, Safe & <span className="text-green-700">Guaranteed</span> Pest Control in Lagos
             </h1>
+
+            <h2 className="text-xl text-gray-700 mt-3">
+  Trusted fumigation and pest control services in Lagos, Nigeria
+</h2>
+
             <p className="mt-4 text-lg text-gray-600 max-w-xl">
               Get rid of pests quickly and safely. Same-day response available — child & pet-friendly treatments.
             </p>
@@ -38,7 +43,7 @@ const Hero = () => {
               </motion.button>
 
               <motion.a
-                href="tel:+2348000000000"
+                href="tel:+2349056981893"
                 className="px-6 py-3 border border-green-300 text-green-700 font-medium rounded-lg flex items-center justify-center gap-2 hover:bg-green-50 transition-all"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.97 }}
@@ -67,7 +72,8 @@ const Hero = () => {
           >
             <div className="relative w-full max-w-md bg-white rounded-2xl shadow-lg overflow-hidden">
               <img
-                alt="technician"
+                alt="Professional fumigation technician in Lagos Nigeria"
+
                 src={professionalImg}
                 className="w-full h-full object-cover"
               />

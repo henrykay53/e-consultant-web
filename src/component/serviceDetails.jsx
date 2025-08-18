@@ -39,7 +39,7 @@ const ServiceDetail = () => {
         <div className="w-12 h-12 bg-green-100 text-green-700 rounded-lg flex items-center justify-center">
           <Icon size={24} />
         </div>
-        <h2 className="text-2xl font-semibold">{service.title}</h2>
+        <h2 className="text-3xl font-bold">{service.title}</h2>
       </div>
 
       <p className="mt-4 text-gray-700">{service.details}</p>

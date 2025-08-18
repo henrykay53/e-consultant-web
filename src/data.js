@@ -39,7 +39,7 @@ export const services = [
   {
     id: "disinfestation",
     icon: "disinfection", // SprayCan icon
-    title: "Disinfestation",
+    title: "Bed Bug Treatment",
     short:
       "Elimination of unwanted pests from large spaces using specialized equipment.",
     details:
@@ -164,7 +164,7 @@ Consult a trusted pest control professional to develop a tailored inspection and
     author: "Henry Kolawole",
     excerpt:
       "Fumigation works best when you're properly prepared. Use this checklist to ensure your home is ready for safe and effective treatment.",
-    image: checkListImg, // <-- Replace with your actual import or asset
+    image: checkListImg, 
     tags: ["Fumigation", "Home Prep", "Checklist"],
     content: `
 Preparing your home for fumigation is key for safety and effectiveness. Here’s your go-to checklist:
@@ -185,7 +185,7 @@ Following these steps ensures the fumigation team can do a thorough, efficient j
     author: "Henry Kolawole",
     excerpt:
       "Explore biofumigation — an eco-friendly pest control method using plant materials that naturally release fumigating compounds.",
-    image: plantfumigationImg, // <-- Replace with your actual import or asset
+    image: plantfumigationImg, 
     tags: ["Biofumigation", "Sustainable", "Fumigation"],
     content: `
 Biofumigation offers a more sustainable pest control option by using decomposing plants to release natural fumigants. Here’s how it works:

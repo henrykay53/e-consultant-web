@@ -11,8 +11,8 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-gray-900 text-gray-300 h-full">
-      <div className="max-w-7xl mx-auto px-6 py-12">
+    <footer className="bg-gray-900 text-gray-300">
+      <div className="max-w-7xl mx-auto px-6 py-12 ">
         {/* Top Section */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
@@ -52,8 +52,8 @@ const Footer = () => {
                 { path: "/services/termite-treatment", label: "Termite Treatment" },
                 { path: "/services/rodent-removal", label: "Rodent Control" },
                 { path: "/services/cockroach-control", label: "Cockroach Control" },
-                { path: "/services/bed-bug-treatment", label: "Bed Bug Treatment" },
-                { path: "/services/fumigation", label: "Home & Office Fumigation" },
+                { path: "/services/disinfestation", label: "Bed Bug Treatment" },
+                { path: "/services/detailed-fumigation", label: "Home & Office Fumigation" },
               ].map((service, idx) => (
                 <li
                   key={idx}
@@ -78,7 +78,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center gap-2">
                 <Mail size={16} className="text-red-600" />
-                <a href="mailto:econsultantglobaltiija@gmail.com" className="hover:text-green-500 transition-colors">
+                <a href="mailto:econsultantglobaltiija@gmail.com" className="hover:text-red-600 transition-colors">
                   econsultantglobaltiija@gmail.com
                 </a>
               </li>
@@ -94,7 +94,7 @@ const Footer = () => {
         <div className="my-8 border-t border-gray-700"></div>
 
         {/* Bottom Section */}
-        <div className="text-center text-xs text-gray-500">
+        <div className="text-center text-xs text-gray-200">
           © {new Date().getFullYear()} E Consultants Global Tiija LTD — All rights reserved.
         </div>
       </div>

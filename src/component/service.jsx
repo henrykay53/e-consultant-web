@@ -39,6 +39,10 @@ export default function Services() {
         <h2 className="text-4xl font-extrabold text-gray-900">
           Our Pest Control Solutions
         </h2>
+
+          <h3 className="text-xl text-gray-700 mt-2">
+    Professional fumigation & pest control services in Lagos for homes & businesses
+  </h3>
         <p className="text-gray-600 mt-3 text-lg">
           Tailored solutions for homes and businesses.
         </p>
@@ -89,7 +93,7 @@ export default function Services() {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    Learn More
+                    Book {s.title}
                   </motion.button>
                 </div>
               </motion.article>
@@ -108,7 +112,7 @@ export default function Services() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
           >
-            View All Services
+             See All Pest Control Services
           </motion.button>
         </div>
       )}
