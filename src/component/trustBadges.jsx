@@ -1,10 +1,10 @@
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 import { ShieldCheck, CheckCircle, BadgeCheck, Award } from "lucide-react";
 
 const TrustBadges = () => {
   const badges = [
-    { text: "Licensed Fumigation Experts in Lagos", icon: ShieldCheck },
-    { text: "Safe for Children, Pets & Businesses", icon: CheckCircle },
+    { text: "Licensed Fumigation Experts", icon: ShieldCheck },
+    { text: "Children and Pets Safe", icon: CheckCircle },
     { text: "30-Day Pest-Free Guarantee", icon: BadgeCheck },
     { text: "25+ Years Pest Control Experience", icon: Award },
   ];
@@ -17,14 +17,18 @@ const TrustBadges = () => {
   };
 
   const badgeVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 80 } },
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { type: "spring", stiffness: 80 },
+    },
   };
 
   return (
-    <section className="bg-gray-50 py-4">
+    <section className="bg-gray-50 py-12">
       <motion.ul
-        className="max-w-6xl mx-auto px-4 py-6 flex flex-wrap gap-4 justify-center text-sm"
+        className="max-w-6xl mx-auto px-4 grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -33,11 +37,11 @@ const TrustBadges = () => {
         {badges.map(({ text, icon: Icon }, index) => (
           <motion.li
             key={index}
-            className="flex items-center gap-2 px-4 py-2 text-lg bg-gray-900 text-white font-semibold border border-green-100 rounded shadow-sm"
+            className="w-full flex items-center gap-3 p-6 bg-white text-gray-900 font-medium rounded-xl border border-gray-200 shadow-sm hover:shadow-md hover:-translate-y-1 transition"
             variants={badgeVariants}
           >
-            <Icon size={18} className="text-green-400" />
-            {text}
+            <Icon size={22} className="text-green-500 flex-shrink-0" />
+            <span className="text-base">{text}</span>
           </motion.li>
         ))}
       </motion.ul>

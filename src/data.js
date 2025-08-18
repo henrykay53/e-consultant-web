@@ -8,6 +8,7 @@ import {
   checkListImg,
   plantfumigationImg,
 } from "./assets/images/index";
+import { Warehouse } from "lucide-react";
 
 
 export const services = [
@@ -67,29 +68,30 @@ export const services = [
 export const testimonials = [
   {
     name: "Mrs. Adebayo",
-    text: "They came same day and solved our cockroach problem. Professional and safe around kids.",
+    text: "They came the same day and solved our cockroach problem. Very professional and safe around the kids.",
   },
   {
     name: "Kolawole Properties",
     text: "Reliable and clear communication — saved us money by preventing termite damage early.",
   },
   {
-    name: "Kolawole Properties",
-    text: "Reliable and clear communication — saved us money by preventing termite damage early.",
+    name: "Mr. Okon",
+    text: "The team was punctual, friendly, and thorough. No more mosquitoes in our compound!",
   },
   {
-    name: "Kolawole Properties",
-    text: "Reliable and clear communication — saved us money by preventing termite damage early.",
+    name: "Bright Future Schools",
+    text: "We needed urgent fumigation before resumption. They worked overnight so classes could reopen on time.",
   },
   {
-    name: "Kolawole Properties",
-    text: "Reliable and clear communication — saved us money by preventing termite damage early.",
+    name: "Mrs. Hassan",
+    text: "Affordable, efficient, and they explained every step. I finally have peace of mind at home.",
   },
   {
-    name: "Kolawole Properties",
-    text: "Reliable and clear communication — saved us money by preventing termite damage early.",
+    name: "Crown Plaza Hotel",
+    text: "Excellent commercial service. Guests noticed the difference immediately — our environment is pest-free.",
   },
 ];
+
 
 
 export const blogPosts = [
@@ -200,3 +202,29 @@ Biofumigation is ideal for gardeners and eco-minded homeowners looking for gentl
     `,
   },
 ];
+
+export const pricing = [
+
+  {
+    id: "houseType",
+    Apartment: 10000,
+    Bungalow: 10000,
+    Duplex: 15000,
+    Mansion: 30000,
+    Warehouse: 100000
+  },
+
+ {
+  id: "fumigationType",
+  bbTreatment: 30000,
+  termiteTreatment: 30000,
+  rodentTreatment: 30000,
+  cockroachTreatment: 30000
+ },
+
+ {
+  id: "location",
+lagosIsland: 30000,
+lagosMainland: 40000
+ }
+]

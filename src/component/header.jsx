@@ -29,12 +29,12 @@ const Header = () => {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <motion.div
-              className=" text-3xl font-bold text-red-800 cursor-pointer"
+              className=" text-2xl font-bold text-red-800 cursor-pointer"
               initial={{ x: -50, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.1, type: "spring", stiffness: 60 }}
             >
-              E Consultants
+              E Consultants Global Tiija
             </motion.div>
 
             {/* Desktop Nav */}
@@ -110,18 +110,18 @@ const Header = () => {
           ></div>
 
           {/* Side Panel */}
-          <div className="relative bg-white w-72 max-w-full h-full shadow-lg p-6 flex flex-col">
+          <div className="relative bg-white w-82 max-w-full h-full shadow-lg p-6 flex flex-col">
             {/* Close Button */}
             <div
               onClick={() => setIsOpen(false)}
-              className="absolute top-4 right-4  text-gray-600 hover:text-black"
+              className="absolute top-6 right-4  text-gray-600 hover:text-black"
             >
               <X size={24} />
             </div>
 
             {/* Brand */}
             <div className="mb-6">
-              <h2 className="text-xl font-bold text-red-600">E Consultants</h2>
+              <h2 className="text-xl font-bold text-red-600">E Consultants Global Tiija </h2>
               <p className="text-sm text-gray-500">
                 Licensed fumigation services across Lagos.
               </p>

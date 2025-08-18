@@ -39,7 +39,7 @@ const About = () => {
 
       {/* Intro Section */}
       <section className="text-center mb-14">
-        <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900">
+        <h1 className="text-2xl md:text-4xl font-extrabold text-gray-900">
           About <span className="text-red-700">E Consultants Global Tiija LTD</span>
         </h1>
         <p className="text-lg text-gray-600 mt-5 max-w-3xl mx-auto leading-relaxed">

@@ -17,9 +17,9 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div>
-            <h2 className="text-2xl font-bold text-red-500">E Consultants</h2>
+            <h2 className="text-2xl font-bold text-red-500">E Consultants Global Tiija</h2>
             <p className="mt-2 text-sm text-gray-400">
-              Licensed fumigation & pest control services across Lagos and Nigeria, keeping homes & businesses safe since 1995.
+              Licensed fumigation & pest control services across Lagos and Nigeria, keeping homes & businesses safe since 2000.
             </p>
           </div>
 
