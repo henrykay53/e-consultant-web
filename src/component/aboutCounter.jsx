@@ -33,17 +33,26 @@ const CounterItem = ({ icon: Icon, label, value, suffix = "" }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 40 }}
       animate={controls}
       onViewportEnter={() => controls.start({ opacity: 1, y: 0 })}
-      className="flex flex-col items-center bg-white shadow-md rounded-2xl p-6 w-full sm:w-60"
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="flex flex-col items-center text-center bg-white/80 backdrop-blur-sm shadow-lg rounded-3xl p-8 w-full sm:w-72 hover:shadow-2xl hover:-translate-y-2 transition-transform"
     >
-      <Icon className="w-8 h-8 sm:w-10 sm:h-10 text-blue-600 mb-2" />
-      <span className="text-2xl sm:text-3xl font-bold text-gray-900">
+      <motion.div
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className="flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 mb-4"
+      >
+        <Icon className="w-8 h-8 text-blue-600" />
+      </motion.div>
+
+      <span className="text-3xl sm:text-4xl font-extrabold text-gray-900 drop-shadow-sm">
         {count}
         {suffix}
       </span>
-      <p className="text-xs sm:text-sm text-gray-500 text-center">{label}</p>
+      <p className="text-sm sm:text-base text-gray-600 mt-2">{label}</p>
     </motion.div>
   );
 };
@@ -60,8 +69,8 @@ export default function AboutUsCounter() {
   if (!hasRun) return null;
 
   return (
-    <div className="w-full py-10 bg-gray-50">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
+    <section className="w-full py-16 bg-gradient-to-r from-gray-50 via-white to-gray-50">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center px-4">
         <CounterItem
           icon={Users}
           label="Happy Clients"
@@ -80,6 +89,6 @@ export default function AboutUsCounter() {
           value={aboutCounter.numberOfPersonnels}
         />
       </div>
-    </div>
+    </section>
   );
 }

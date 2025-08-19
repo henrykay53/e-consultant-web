@@ -1,5 +1,7 @@
+import { Target, BadgeCheck, Leaf } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import AboutUsCounter from "./aboutCounter";
+import Carousel from "./ourClients";
 
 const About = () => {
   const team = [
@@ -56,7 +58,9 @@ const About = () => {
         aria-label="Company Features"
         className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20"
       >
-        <article className="bg-white p-8 rounded-2xl shadow-md hover:shadow-lg transition-all">
+        {/* Mission */}
+        <article className="bg-white p-8 rounded-2xl shadow-md hover:shadow-lg transition-all text-center">
+          <Target className="w-10 h-10 text-red-600 mx-auto mb-4" />
           <h2 className="text-xl font-semibold text-gray-900">Our Mission</h2>
           <p className="text-gray-600 mt-3 leading-relaxed">
             To deliver safe, effective, and eco-friendly pest control solutions
@@ -65,7 +69,9 @@ const About = () => {
           </p>
         </article>
 
-        <article className="bg-white p-8 rounded-2xl shadow-md hover:shadow-lg transition-all">
+        {/* Certifications */}
+        <article className="bg-white p-8 rounded-2xl shadow-md hover:shadow-lg transition-all text-center">
+          <BadgeCheck className="w-10 h-10 text-green-600 mx-auto mb-4" />
           <h2 className="text-xl font-semibold text-gray-900">Certifications & Compliance</h2>
           <p className="text-gray-600 mt-3 leading-relaxed">
             We are licensed by Nigerian regulatory authorities, insured for your safety,
@@ -74,7 +80,9 @@ const About = () => {
           </p>
         </article>
 
-        <article className="bg-white p-8 rounded-2xl shadow-md hover:shadow-lg transition-all">
+        {/* Safety */}
+        <article className="bg-white p-8 rounded-2xl shadow-md hover:shadow-lg transition-all text-center">
+          <Leaf className="w-10 h-10 text-emerald-600 mx-auto mb-4" />
           <h2 className="text-xl font-semibold text-gray-900">Safety & Eco-Friendliness</h2>
           <p className="text-gray-600 mt-3 leading-relaxed">
             Our treatments prioritize human health, pets, and the environment. We provide clear
@@ -100,15 +108,15 @@ const About = () => {
           {team.map((member, index) => (
             <article
               key={index}
-              className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-all p-6 text-center"
+              className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-all p-4"
             >
-              <figure>
+              <figure className="flex items-center gap-x-4">
                 <img
                   src={member.img}
                   alt={`${member.name}, ${member.role}`}
-                  className="w-28 h-28 rounded-full mx-auto object-cover border-4 border-gray-100"
+                  className="w-20 h-20 rounded-full object-cover border-4 border-gray-100"
                 />
-                <figcaption className="mt-4">
+                <figcaption className="text-left">
                   <h3 className="text-lg font-semibold text-gray-900">{member.name}</h3>
                   <p className="text-sm text-gray-500">{member.role}</p>
                 </figcaption>
@@ -116,10 +124,12 @@ const About = () => {
             </article>
           ))}
         </div>
+
       </section>
+
+      <Carousel />
     </main>
   );
 };
 
 export default About;
-
