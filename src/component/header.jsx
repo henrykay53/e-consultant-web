@@ -26,7 +26,7 @@ const Header = () => {
         transition={{ type: "spring", stiffness: 70, damping: 12 }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between h-18">
             {/* Logo */}
             <motion.div
               className=" text-2xl font-bold text-red-800 cursor-pointer"
@@ -34,7 +34,12 @@ const Header = () => {
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.1, type: "spring", stiffness: 60 }}
             >
-              E Consultants Global Tiija
+
+              <div className="flex gap-2  items-center">
+                <img src="logo\logo.png" alt="logo" className="w-[10%]" />
+
+                <p>E Consultants Global Tiija   </p></div>
+
             </motion.div>
 
             {/* Desktop Nav */}
