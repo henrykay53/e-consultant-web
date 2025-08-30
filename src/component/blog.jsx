@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { blogPosts } from "../data";
+import { logEvent } from "../helper";
 
 const BlogList = () => {
   const navigate = useNavigate();
@@ -11,13 +12,25 @@ const BlogList = () => {
     setVisibleCount(blogPosts.length);
   };
 
+  //Track blog post open
+  const handleOpenPost = (post) => {
+    logEvent("blog_post_open", {
+      category: "engagement",
+      label: post.title,
+      post_id: post.id,
+    });
+
+    navigate(`/blog/${post.id}`);
+  };
+
   return (
     <main className="max-w-6xl mx-auto px-4 py-12">
       {/* Hero Section */}
       <header className="text-center mb-12">
         <h1 className="text-4xl font-bold text-gray-900">Blog</h1>
         <p className="text-lg text-gray-600 mt-2 max-w-2xl mx-auto">
-          Expert tips, insights, and updates on keeping your home and business pest-free.
+          Expert tips, insights, and updates on keeping your home and business
+          pest-free.
         </p>
       </header>
 
@@ -37,14 +50,14 @@ const BlogList = () => {
               <time className="text-sm text-gray-500">{post.date}</time>
               <h2
                 className="text-xl font-semibold text-gray-900 mt-1 hover:text-red-800 transition-colors cursor-pointer"
-                onClick={() => navigate(`/blog/${post.id}`)}
+                onClick={() => handleOpenPost(post)}
               >
                 {post.title}
               </h2>
               <p className="text-gray-600 text-sm mt-3">{post.excerpt}</p>
 
               <motion.button
-                onClick={() => navigate(`/blog/${post.id}`)}
+                onClick={() => handleOpenPost(post)}
                 className="px-3 py-2 mt-5 rounded-md text-sm text-white bg-red-800 hover:bg-red-900 transition-colors"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

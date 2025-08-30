@@ -4,7 +4,7 @@ import { Users, Clock, UserCheck } from "lucide-react";
 
 const aboutCounter = {
   numberOfClients: 150,
-  numberOfYearsOperational: 30,
+  numberOfYearsOperational: 20,
   numberOfPersonnels: 7,
 };
 

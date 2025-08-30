@@ -8,7 +8,7 @@ import {
   checkListImg,
   plantfumigationImg,
 } from "./assets/images/index";
-import { Warehouse } from "lucide-react";
+
 
 
 export const services = [
