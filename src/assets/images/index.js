@@ -5,7 +5,7 @@ import fumigateImg from "./fumigate.jpg";
 import contactImg from "./contact.svg";
 import professionalImg from "./professional.jpg";
 import checkListImg from "./checkList.jpg";
-import plantfumigationImg from "./plantfumigation.jpg";
+import plantfumigationImg from "./plantFumigation.jpg";
 import zenithLogo from "./zenithLogo.webp";
 import eritoyLogo from "./eritoyLogo.jpg";
 import dePhantomLogo from "./dePhantom.png";
