@@ -92,8 +92,6 @@ export const testimonials = [
   },
 ];
 
-
-
 export const blogPosts = [
   {
     id: slugify("5 Signs You Might Have a Termite Problem", { lower: true }),
