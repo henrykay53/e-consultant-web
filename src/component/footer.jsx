@@ -94,7 +94,7 @@ const Footer = () => {
               </li>
             </ul>
 
-            {/* Social Media */}
+            {/* Social Media
             <div className="flex gap-4 mt-6">
               <a
                 href="https://instagram.com"
@@ -120,7 +120,7 @@ const Footer = () => {
               >
                 <Linkedin size={20} />
               </a>
-            </div>
+            </div> */}
           </div>
         </div>
 
