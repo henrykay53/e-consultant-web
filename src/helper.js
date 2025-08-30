@@ -13,3 +13,14 @@ const  ScrollToTop = ()=> {
 }
 
 export default ScrollToTop
+
+
+
+
+// src/utils/gaEvents.js
+export const logEvent = (action, params = {}) => {
+  if (window.gtag) {
+    window.gtag("event", action, params);
+  }
+};
+

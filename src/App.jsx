@@ -10,11 +10,14 @@ import About from "./component/about";
 import Blog from "./component/blog";
 import BlogDetail from "./component/blogDetails";
 import Contact from "./component/contactUs";
+import AnalyticsTracker from "./analyticsTracker";
 
 
 export default function App() {
   return (
     <Router>
+
+      <AnalyticsTracker/>
       <div className="flex flex-col min-h-screen bg-gray-50 text-gray-800">
         <Header />
 
