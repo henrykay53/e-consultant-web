@@ -91,9 +91,10 @@
 
 
 
-import React, { useState, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import { blogPosts } from "../data";
 import { logEvent } from "../helper";
 
@@ -131,6 +132,20 @@ const BlogList = () => {
 
   return (
     <main className="max-w-6xl mx-auto px-4 py-12">
+
+
+      {/* SEO Metadata */}
+      <Helmet>
+        <title>Fumigation Blog | Pest Control Tips & Services in Lagos</title>
+        <meta
+          name="description"
+          content="Read expert fumigation and pest control tips for homes, offices, and businesses in Lagos. Stay updated with safe and effective pest prevention guides."
+        />
+        <meta
+          name="keywords"
+          content="fumigation blog, pest control tips, Lagos pest control, pest prevention Nigeria, home fumigation advice"
+        />
+      </Helmet>
       {/* Header */}
       <header className="text-center mb-10">
         <h1 className="text-4xl font-bold text-gray-900">Blog</h1>

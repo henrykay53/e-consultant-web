@@ -2,6 +2,7 @@ import { useState } from "react";
 import { services } from "../data";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+// import { Helmet } from "react-helmet-async";
 
 // Lucide icons
 import { Bug, ShieldCheck, Home, Trees, SprayCan, PawPrint } from "lucide-react";
@@ -34,6 +35,7 @@ export default function Services() {
 
   return (
     <section className="max-w-7xl mx-auto px-4 py-14">
+
       {/* Section Header */}
       <div className="text-center max-w-2xl mx-auto">
         <h2 className="text-4xl font-extrabold text-gray-900">
