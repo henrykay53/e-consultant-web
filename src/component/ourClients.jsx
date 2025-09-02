@@ -27,7 +27,7 @@ const OurClients = () => {
           ref={marquee}
           animate={{ x: ["0%", "-50%"] }}
           transition={{
-            x: { repeat: Infinity, repeatType: "loop", duration: 35, ease: "linear" },
+            x: { repeat: Infinity, repeatType: "loop", duration: 10, ease: "linear" },
           }}
         >
           {clients.concat(clients).map((client, idx) => (

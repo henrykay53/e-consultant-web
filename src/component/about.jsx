@@ -2,14 +2,14 @@ import { Target, BadgeCheck, Leaf } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import AboutUsCounter from "./aboutCounter";
 import Carousel from "./ourClients";
-import {femi, chinedu} from "../assets/images";
+import {femi, chinedu, benard} from "../assets/images";
 
 const About = () => {
   const team = [
     {
       name: "Benard",
       role: "Sprayer Technician",
-      img: "https://randomuser.me/api/portraits/men/32.jpg",
+      img: benard,
     },
     {
       name: "Femi",
