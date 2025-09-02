@@ -2,23 +2,24 @@ import { Target, BadgeCheck, Leaf } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import AboutUsCounter from "./aboutCounter";
 import Carousel from "./ourClients";
+import {femi, chinedu} from "../assets/images";
 
 const About = () => {
   const team = [
     {
-      name: "Barnard",
+      name: "Benard",
       role: "Sprayer Technician",
       img: "https://randomuser.me/api/portraits/men/32.jpg",
     },
     {
       name: "Femi",
-      role: "Fogger Manager",
-      img: "https://randomuser.me/api/portraits/women/44.jpg",
+      role: "Fogger Technician",
+      img: femi,
     },
     {
       name: "Chinedu",
       role: "Fumigation Support",
-      img: "https://randomuser.me/api/portraits/men/68.jpg",
+      img: chinedu,
     },
   ];
 
