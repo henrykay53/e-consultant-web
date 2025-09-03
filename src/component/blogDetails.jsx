@@ -33,8 +33,10 @@ const BlogDetail = () => {
         <meta property="og:title" content={post.title} />
         <meta property="og:description" content={post.excerpt} />
         <meta property="og:image" content={post.image} />
-        <link rel="canonical" href={`https://yourdomain.com/blog/${post.id}`} />
+        <link rel="canonical" href={`https://econsultantsglobaltiija.netlify.app/blog/${post.id}`} />
       </Helmet>
+
+      
 
       <motion.button
         onClick={() => navigate("/blog")}

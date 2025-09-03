@@ -1,9 +1,24 @@
 import { Phone, MessageCircle, Mail } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 import { contactImg } from "../assets/images";
 
 const Contact = () => {
   return (
     <main className="max-w-6xl mx-auto px-4 py-12">
+
+      <Helmet>
+
+        <title>Contact Us | Lagos Pest Control Services</title>
+        <meta
+          name="description"
+          content="Get in touch with Lagos Pest Control for fumigation, pest prevention, and extermination services. Contact us via phone, WhatsApp, or email."
+        />
+        <meta
+          name="keywords"
+          content="contact Lagos fumigation, pest control contact Nigeria, fumigation services phone, pest control email"
+        />
+
+      </Helmet>
       {/* Heading */}
       <div className="text-center mb-10">
         <h2 className="text-4xl font-bold text-gray-900">Contact Us</h2>

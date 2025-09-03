@@ -8,13 +8,6 @@ const Hero = () => {
 
   const navigate = useNavigate();
 
-
-
-  
-
-
-
-
   return (
     <section className="bg-gradient-to-b from-green-50 to-white">
       <div className="max-w-7xl mx-auto px-4 py-12 sm:py-20">

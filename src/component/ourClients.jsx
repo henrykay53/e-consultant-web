@@ -2,15 +2,15 @@ import { motion } from "framer-motion";
 import { useRef } from "react";
 
 // import client logos from your assets
-import { zenithLogo, eritoyLogo, dePhantomLogo } from "../assets/images"; 
+import { zenithLogo, brollLogo, eritoyLogo, dePhantomLogo, landmarkLogo } from "../assets/images"; 
 
 const OurClients = () => {
   const clients = [
     { id: 1, name: "Zenith Bank PLC", logo: zenithLogo },
-    { id: 2, name: "African Alliance Insurance Plc", logo: "/logos/african-alliance.svg" }, // placeholder
+    { id: 2, name: "Broll properties", logo: brollLogo }, 
     { id: 3, name: "De Phantom Hotels", logo: dePhantomLogo },
     { id: 4, name: "Eritoy Schools", logo: eritoyLogo },
-    { id: 5, name: "Oceancrest Properties", logo: "/logos/oceancrest.svg" }, // placeholder
+    { id: 5, name: "Landmark Boulevard", logo: landmarkLogo }, 
   ];
 
   const marquee = useRef(null);
@@ -27,7 +27,7 @@ const OurClients = () => {
           ref={marquee}
           animate={{ x: ["0%", "-50%"] }}
           transition={{
-            x: { repeat: Infinity, repeatType: "loop", duration: 25, ease: "linear" },
+            x: { repeat: Infinity, repeatType: "loop", duration: 10, ease: "linear" },
           }}
         >
           {clients.concat(clients).map((client, idx) => (

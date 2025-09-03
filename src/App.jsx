@@ -3,7 +3,7 @@ import ScrollToTop from "./component/scrollToTop";
 import Header from "./component/header";
 import Footer from "./component/footer";
 import Home from "./component/home";
-import Services from "./component/service";
+import ServicesPage from "./component/servicesPage";
 import ServiceDetail from "./component/serviceDetails";
 import Pricing from "./component/pricing";
 import About from "./component/about";
@@ -27,15 +27,14 @@ export default function App() {
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/services" element={<Services />} />
+            <Route path="/services" element={<ServicesPage />} />
             <Route path="/services/:id" element={<ServiceDetail />} />
-
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/about" element={<About />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:id" element={<BlogDetail />} />
             <Route path="/contact" element={<Contact />} />
-            <Route path="*" element={<Home />} />
+    
           </Routes>
         </main>
 
