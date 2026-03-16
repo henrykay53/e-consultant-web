@@ -18,7 +18,7 @@ const Home = () => {
       </Helmet>
 
       <Hero />
-      <TrustBadges />
+      <TrustBadges />    
       <Services />
       <WhyChoose />
       <Testimonials />

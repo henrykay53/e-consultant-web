@@ -1,7 +1,16 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
-import { Menu, X, Phone, Mail, Home, Info, FileText, DollarSign } from "lucide-react";
+import {
+  Menu,
+  X,
+  Phone,
+  Mail,
+  Home,
+  Info,
+  FileText,
+  DollarSign,
+} from "lucide-react";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -34,12 +43,11 @@ const Header = () => {
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.1, type: "spring", stiffness: 60 }}
             >
-
               <div className="flex gap-2  items-center">
-                <img src="logo\logo.png" alt="logo" className="w-[10%]" />
+                <img src="logo\logo.png" alt="logo" className="w-[8%]" />
 
-                <p>E Consultants Global Tiija   </p></div>
-
+                <p>E Consultants Global Tiija </p>
+              </div>
             </motion.div>
 
             {/* Desktop Nav */}
@@ -109,10 +117,7 @@ const Header = () => {
       {isOpen && (
         <div className="fixed inset-0 z-50 flex">
           {/* Overlay */}
-          <div
-            className="fixed inset-0"
-            onClick={() => setIsOpen(false)}
-          ></div>
+          <div className="fixed inset-0" onClick={() => setIsOpen(false)}></div>
 
           {/* Side Panel */}
           <div className="relative bg-white w-82 max-w-full h-full shadow-lg p-6 flex flex-col">
@@ -126,7 +131,9 @@ const Header = () => {
 
             {/* Brand */}
             <div className="mb-6">
-              <h2 className="text-xl font-bold text-red-600">E Consultants Global Tiija </h2>
+              <h2 className="text-xl font-bold text-red-600">
+                E Consultants Global Tiija{" "}
+              </h2>
               <p className="text-sm text-gray-500">
                 Licensed fumigation services across Lagos.
               </p>
