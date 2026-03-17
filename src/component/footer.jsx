@@ -25,7 +25,7 @@ const Footer = () => {
                 </div>
             <p className="mt-2 text-sm text-gray-400">
               Licensed fumigation & pest control services across Lagos and Nigeria, 
-              keeping homes & businesses safe since 2000.
+              keeping homes & businesses safe since 2008.
             </p>
           </div>
 
