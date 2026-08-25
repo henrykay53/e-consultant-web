@@ -16,9 +16,9 @@ const OurClients = () => {
   const marquee = useRef(null);
 
   return (
-    <section className="py-12 bg-gray-50">
-      <h2 className="text-3xl font-bold text-center mb-10 text-gray-800">
-        Our Trusted Clients
+    <section className="bg-white section-y border-t border-bone-300">
+      <h2 className="font-display text-3xl font-bold text-center mb-3">
+        Trusted by
       </h2>
 
       <div className="overflow-hidden">
@@ -34,14 +34,14 @@ const OurClients = () => {
             <motion.div
               key={`${client.id}-${idx}`}
               whileHover={{ scale: 1.05, y: -5 }}
-              className="flex flex-col items-center min-w-[180px] bg-white rounded-xl shadow-md hover:shadow-xl p-6 transition"
+              className="flex flex-col items-center min-w-[180px] bg-bone border border-bone-300 rounded-2xl p-6 hover:border-brand-300 transition-colors"
             >
               <img
                 src={client.logo}
                 alt={client.name}
                 className="h-16 object-contain mb-3"
               />
-              <p className="text-sm sm:text-base font-medium text-gray-700 text-center whitespace-nowrap">
+              <p className="text-sm font-semibold text-ink-soft text-center whitespace-nowrap">
                 {client.name}
               </p>
             </motion.div>

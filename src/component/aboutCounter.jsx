@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { motion, useAnimation } from "framer-motion";
 import { Users, Clock, UserCheck } from "lucide-react";
+import { yearsOperating } from "../siteConfig";
 
 const aboutCounter = {
   numberOfClients: 150,
-  numberOfYearsOperational: 20,
+  numberOfYearsOperational: yearsOperating,
   numberOfPersonnels: 7,
 };
 
@@ -37,22 +38,22 @@ const CounterItem = ({ icon: Icon, label, value, suffix = "" }) => {
       animate={controls}
       onViewportEnter={() => controls.start({ opacity: 1, y: 0 })}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="flex flex-col items-center text-center bg-white/80 backdrop-blur-sm shadow-lg rounded-3xl p-8 w-full sm:w-72 hover:shadow-2xl hover:-translate-y-2 transition-transform"
+      className="flex flex-col items-center text-center w-full max-w-xs px-6 py-4"
     >
       <motion.div
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 mb-4"
+        className="flex items-center justify-center w-14 h-14 rounded-2xl bg-white/10 border border-white/15 mb-4"
       >
-        <Icon className="w-8 h-8 text-blue-600" />
+        <Icon className="w-7 h-7 text-brass-300" />
       </motion.div>
 
-      <span className="text-3xl sm:text-4xl font-extrabold text-gray-900 drop-shadow-sm">
+      <span className="font-display text-5xl font-bold text-white tabular">
         {count}
         {suffix}
       </span>
-      <p className="text-sm sm:text-base text-gray-600 mt-2">{label}</p>
+      <p className="text-sm text-brand-100/75 mt-2">{label}</p>
     </motion.div>
   );
 };
@@ -69,8 +70,8 @@ export default function AboutUsCounter() {
   if (!hasRun) return null;
 
   return (
-    <section className="w-full py-16 bg-gradient-to-r from-gray-50 via-white to-gray-50">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center px-4">
+    <section className="relative overflow-hidden w-full bg-brand-900 bugs-dark section-y">
+      <div className="relative max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8 justify-items-center px-4">
         <CounterItem
           icon={Users}
           label="Happy Clients"

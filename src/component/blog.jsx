@@ -1,241 +1,153 @@
-// import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
-// import { motion } from "framer-motion";
-// import { blogPosts } from "../data";
-// import { logEvent } from "../helper";
-
-// const BlogList = () => {
-//   const navigate = useNavigate();
-//   const [visibleCount, setVisibleCount] = useState(3);
-
-//   const handleShowMore = () => {
-//     setVisibleCount(blogPosts.length);
-//   };
-
-//   //Track blog post open
-//   const handleOpenPost = (post) => {
-//     logEvent("blog_post_open", {
-//       category: "engagement",
-//       label: post.title,
-//       post_id: post.id,
-//     });
-
-//     navigate(`/blog/${post.id}`);
-//   };
-
-//   return (
-//     <main className="max-w-6xl mx-auto px-4 py-12">
-//       {/* Hero Section */}
-//       <header className="text-center mb-12">
-//         <h1 className="text-4xl font-bold text-gray-900">Blog</h1>
-//         <p className="text-lg text-gray-600 mt-2 max-w-2xl mx-auto">
-//           Expert tips, insights, and updates on keeping your home and business
-//           pest-free.
-//         </p>
-//       </header>
-
-//       {/* Blog Grid */}
-//       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-//         {blogPosts.slice(0, visibleCount).map((post) => (
-//           <article
-//             key={post.id}
-//             className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow"
-//           >
-//             <img
-//               src={post.image}
-//               alt={post.title}
-//               className="w-full h-48 object-cover"
-//             />
-//             <div className="p-6">
-//               <time className="text-sm text-gray-500">{post.date}</time>
-//               <h2
-//                 className="text-xl font-semibold text-gray-900 mt-1 hover:text-red-800 transition-colors cursor-pointer"
-//                 onClick={() => handleOpenPost(post)}
-//               >
-//                 {post.title}
-//               </h2>
-//               <p className="text-gray-600 text-sm mt-3">{post.excerpt}</p>
-
-//               <motion.button
-//                 onClick={() => handleOpenPost(post)}
-//                 className="px-3 py-2 mt-5 rounded-md text-sm text-white bg-red-800 hover:bg-red-900 transition-colors"
-//                 whileHover={{ scale: 1.05 }}
-//                 whileTap={{ scale: 0.95 }}
-//               >
-//                 Read More →
-//               </motion.button>
-//             </div>
-//           </article>
-//         ))}
-//       </section>
-
-//       {/* Show More Button */}
-//       {visibleCount < blogPosts.length && (
-//         <div className="text-center mt-10">
-//           <motion.button
-//             onClick={handleShowMore}
-//             className="px-5 py-3 rounded-md text-sm text-white bg-gray-800 hover:bg-gray-900 transition-colors"
-//             whileHover={{ scale: 1.05 }}
-//             whileTap={{ scale: 0.95 }}
-//           >
-//             Show More
-//           </motion.button>
-//         </div>
-//       )}
-//     </main>
-//   );
-// };
-
-// export default BlogList;
-
-
-
-
 import { useState, useMemo } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Helmet } from "react-helmet-async";
+import { Search, ArrowRight } from "lucide-react";
+import Seo from "./seo";
+import PageHeader from "./pageHeader";
 import { blogPosts } from "../data";
 import { logEvent } from "../helper";
+import CallBand from "./callBand";
 
-const POSTS_PER_PAGE = 3;
+const POSTS_PER_PAGE = 6;
 
 const BlogList = () => {
-  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
 
-  // Filter posts based on search query
   const filteredPosts = useMemo(() => {
+    const q = searchQuery.trim().toLowerCase();
+    if (!q) return blogPosts;
     return blogPosts.filter(
       (post) =>
-        post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        post.excerpt.toLowerCase().includes(searchQuery.toLowerCase())
+        post.title.toLowerCase().includes(q) ||
+        post.excerpt.toLowerCase().includes(q) ||
+        post.tags.some((tag) => tag.toLowerCase().includes(q))
     );
   }, [searchQuery]);
 
-  // Pagination logic
-  const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE);
+  const totalPages = Math.max(1, Math.ceil(filteredPosts.length / POSTS_PER_PAGE));
   const paginatedPosts = useMemo(() => {
     const start = (currentPage - 1) * POSTS_PER_PAGE;
     return filteredPosts.slice(start, start + POSTS_PER_PAGE);
   }, [filteredPosts, currentPage]);
 
-  const handleOpenPost = (post) => {
-    logEvent("blog_post_open", {
-      category: "engagement",
-      label: post.title,
-      post_id: post.id,
-    });
-    navigate(`/blog/${post.id}`);
-  };
-
   return (
-    <main className="max-w-6xl mx-auto px-4 py-12">
+    <>
+      <Seo
+        title="Pest Control &amp; Fumigation Blog"
+        description="Practical fumigation and pest control advice for Lagos homes, estates, short-lets and businesses. Termites, rodents, bed bugs and prevention guides."
+        path="/blog"
+      />
 
-
-      {/* SEO Metadata */}
-      <Helmet>
-        <title>Fumigation Blog | Pest Control Tips & Services in Lagos</title>
-        <meta
-          name="description"
-          content="Read expert fumigation and pest control tips for homes, offices, and businesses in Lagos. Stay updated with safe and effective pest prevention guides."
-        />
-        <meta
-          name="keywords"
-          content="fumigation blog, pest control tips, Lagos pest control, pest prevention Nigeria, home fumigation advice"
-        />
-      </Helmet>
-      {/* Header */}
-      <header className="text-center mb-10">
-        <h1 className="text-4xl font-bold text-gray-900">Blog</h1>
-        <p className="text-lg text-gray-600 mt-2 max-w-2xl mx-auto">
-          Expert tips, insights, and updates on keeping your home and business pest-free.
-        </p>
-
-        {/* Search Input */}
-        <div className="mt-6 max-w-md ">
+      <PageHeader
+        eyebrow="Guides"
+        title="What we've learned, written down"
+        lede="Practical advice for Lagos homes, estates and short-lets — from the jobs we actually get called to."
+      >
+        <div className="mt-8 max-w-md mx-auto relative">
+          <Search
+            size={18}
+            className="absolute left-4 top-1/2 -translate-y-1/2 text-ink-muted pointer-events-none"
+            aria-hidden="true"
+          />
+          <label htmlFor="blog-search" className="sr-only">
+            Search blog posts
+          </label>
           <input
-            type="text"
-            placeholder="Search posts..."
+            id="blog-search"
+            type="search"
+            placeholder="Search posts…"
             value={searchQuery}
             onChange={(e) => {
               setSearchQuery(e.target.value);
-              setCurrentPage(1); // reset to first page on search
+              setCurrentPage(1);
             }}
-            className="w-full border border-gray-300 rounded-md px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-red-800"
+            className="w-full border border-bone-300 rounded-xl pl-12 pr-4 py-3.5 text-sm bg-white focus:border-brand-600 focus:ring-2 focus:ring-brand-100 outline-none transition"
           />
         </div>
-      </header>
+      </PageHeader>
 
-      {/* Blog Posts Grid */}
+    <div className="bg-white section-y">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {paginatedPosts.length > 0 ? (
           paginatedPosts.map((post) => (
-            <article
+            <motion.article
               key={post.id}
-              className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow"
+              className="bg-bone rounded-2xl border border-bone-300 overflow-hidden hover:border-brand-300 hover:shadow-xl hover:shadow-brand-950/8 transition-all"
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
             >
-              <img
-                src={post.image}
-                alt={post.title}
-                className="w-full h-48 object-cover"
-              />
-              <div className="p-6">
-                <time className="text-sm text-gray-500">{post.date}</time>
-                <h2
-                  className="text-xl font-semibold text-gray-900 mt-1 hover:text-red-800 transition-colors cursor-pointer"
-                  onClick={() => handleOpenPost(post)}
-                >
-                  {post.title}
-                </h2>
-                <p className="text-gray-600 text-sm mt-3">{post.excerpt}</p>
-
-                <motion.button
-                  onClick={() => handleOpenPost(post)}
-                  className="px-3 py-2 mt-5 rounded-md text-sm text-white bg-red-800 hover:bg-red-900 transition-colors"
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  Read More →
-                </motion.button>
-              </div>
-            </article>
+              <Link
+                to={`/blog/${post.id}`}
+                onClick={() =>
+                  logEvent("blog_post_open", { label: post.title, post_id: post.id })
+                }
+                className="group block h-full"
+              >
+                <img
+                  src={post.image}
+                  alt=""
+                  width="640"
+                  height="360"
+                  loading="lazy"
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-6">
+                  <time className="text-sm text-ink-muted" dateTime={post.date}>
+                    {post.date}
+                  </time>
+                  <h2 className="font-display text-xl font-bold mt-1 group-hover:text-brand-700 transition-colors">
+                    {post.title}
+                  </h2>
+                  <p className="text-ink-soft text-sm mt-3 leading-relaxed">
+                    {post.excerpt}
+                  </p>
+                  <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-700 group-hover:gap-2.5 transition-all">
+                    Read more <ArrowRight size={15} />
+                  </span>
+                </div>
+              </Link>
+            </motion.article>
           ))
         ) : (
-          <p className="text-center col-span-full text-gray-500 text-lg">
-            No posts found.
+          <p className="text-center col-span-full text-ink-muted text-lg py-12">
+            No posts match “{searchQuery}”.
           </p>
         )}
       </section>
 
-      {/* Pagination Controls */}
       {filteredPosts.length > POSTS_PER_PAGE && (
-        <div className="flex justify-center items-center mt-10 gap-4">
+        <nav className="flex justify-center items-center mt-12 gap-4" aria-label="Pagination">
           <button
             disabled={currentPage === 1}
-            onClick={() => setCurrentPage((prev) => prev - 1)}
-            className="px-4 py-2 rounded-md bg-gray-300 text-white hover:bg-gray-400 disabled:opacity-50"
+            onClick={() => setCurrentPage((p) => p - 1)}
+            className="px-5 py-2.5 rounded-xl border border-bone-300 bg-white text-sm font-bold hover:border-brand-300 hover:text-brand-700 disabled:opacity-40 disabled:hover:border-bone-300 transition-colors"
           >
             Previous
           </button>
-
-          <span className="text-sm text-gray-700">
+          <span className="text-sm text-ink-soft">
             Page {currentPage} of {totalPages}
           </span>
-
           <button
             disabled={currentPage === totalPages}
-            onClick={() => setCurrentPage((prev) => prev + 1)}
-            className="px-4 py-2 rounded-md bg-gray-300 text-white hover:bg-gray-400 disabled:opacity-50"
+            onClick={() => setCurrentPage((p) => p + 1)}
+            className="px-5 py-2.5 rounded-xl border border-bone-300 bg-white text-sm font-bold hover:border-brand-300 hover:text-brand-700 disabled:opacity-40 disabled:hover:border-bone-300 transition-colors"
           >
             Next
           </button>
-        </div>
+        </nav>
       )}
-    </main>
+      <CallBand
+        heading="Reading up because something's already in the house?"
+        body="Articles help. A technician helps faster. Tell us what you're seeing and we'll tell you what it takes to clear it."
+        source="band-blog"
+      />
+      </div>
+    </div>
+    </>
   );
 };
 
 export default BlogList;
-

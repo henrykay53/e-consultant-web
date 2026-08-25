@@ -1,46 +1,34 @@
+import { lazy, Suspense, useMemo } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import ScrollToTop from "./component/scrollToTop";
-import Header from "./component/header";
-import Footer from "./component/footer";
-import Home from "./component/home";
-import ServicesPage from "./component/servicesPage";
-import ServiceDetail from "./component/serviceDetails";
-import Pricing from "./component/pricing";
-import About from "./component/about";
-import Blog from "./component/blog";
-import BlogDetail from "./component/blogDetails";
-import Contact from "./component/contactUs";
-import AnalyticsTracker from "./analyticsTracker";
+import AppShell from "./AppShell";
+import { routes } from "./routes";
 
+const RouteFallback = () => (
+  <div className="min-h-[50vh] flex items-center justify-center" role="status">
+    <span className="sr-only">Loading…</span>
+    <div className="w-8 h-8 rounded-full border-2 border-brand-200 border-t-brand-600 animate-spin" />
+  </div>
+);
 
 export default function App() {
+  // Each route is its own chunk, so a visitor who only wants the phone
+  // number no longer downloads the blog and the quote calculator too.
+  const lazyRoutes = useMemo(
+    () => routes.map((r) => ({ ...r, Component: lazy(r.importer) })),
+    []
+  );
+
   return (
     <Router>
-
-      <AnalyticsTracker/>
-      <div className="flex flex-col min-h-screen bg-gray-50 text-gray-800">
-        <Header />
-
-         <ScrollToTop /> 
-
-        {/* Main content takes available space */}
-        <main className="flex-grow">
+      <AppShell>
+        <Suspense fallback={<RouteFallback />}>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/services" element={<ServicesPage />} />
-            <Route path="/services/:id" element={<ServiceDetail />} />
-            <Route path="/pricing" element={<Pricing />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:id" element={<BlogDetail />} />
-            <Route path="/contact" element={<Contact />} />
-    
+            {lazyRoutes.map(({ path, Component }) => (
+              <Route key={path} path={path} element={<Component />} />
+            ))}
           </Routes>
-        </main>
-
-        <Footer />
-      </div>
+        </Suspense>
+      </AppShell>
     </Router>
   );
 }
-

@@ -1,13 +1,11 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { Bug, ShieldCheck, Home, Trees, SprayCan, PawPrint, ArrowRight, Phone } from "lucide-react";
 import { services } from "../data";
-import { motion, AnimatePresence } from "framer-motion";
-import { useNavigate } from "react-router-dom";
-// import { Helmet } from "react-helmet-async";
+import { telHref } from "../siteConfig";
+import { trackCall } from "../helper";
 
-// Lucide icons
-import { Bug, ShieldCheck, Home, Trees, SprayCan, PawPrint } from "lucide-react";
-
-// Map of icon names to components
 const iconMap = {
   general: Bug,
   termite: ShieldCheck,
@@ -17,107 +15,80 @@ const iconMap = {
   petSafe: PawPrint,
 };
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { type: "spring", stiffness: 70 },
-  },
-  exit: { opacity: 0, y: 30 },
-};
-
-export default function Services() {
-  const navigate = useNavigate();
+export default function Services({ showHeading = true }) {
   const [showAll, setShowAll] = useState(false);
-
-  const displayedServices = showAll ? services : services.slice(0, 3);
+  const displayed = showAll ? services : services.slice(0, 3);
 
   return (
-    <section className="max-w-7xl mx-auto px-4 py-14">
+    <section className="bg-white section-y">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {showHeading && (
+          <div className="text-center max-w-2xl mx-auto">
+            <p className="eyebrow text-brass-600">What we treat</p>
+            <h2 className="mt-3 text-4xl md:text-5xl font-bold leading-tight">
+              Tell us what you&apos;re seeing
+            </h2>
+            <p className="mt-4 text-lg text-ink-soft">
+              Every treatment starts with an inspection, so you&apos;re paying for
+              the problem you actually have — not a standard spray.
+            </p>
+          </div>
+        )}
 
-      {/* Section Header */}
-      <div className="text-center max-w-2xl mx-auto">
-        <h2 className="text-4xl font-extrabold text-gray-900">
-          Our Pest Control Solutions
-        </h2>
-
-          <h3 className="text-xl text-gray-700 mt-2">
-    Professional fumigation & pest control services in Lagos for homes & businesses
-  </h3>
-        <p className="text-gray-600 mt-3 text-lg">
-          Tailored solutions for homes and businesses.
-        </p>
-      </div>
-
-      {/* Service Cards */}
-      <motion.div
-        key={showAll} // force remount on toggle for stagger animation
-        className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
-        initial="hidden"
-        animate="visible"
-        variants={{
-          hidden: {},
-          visible: { transition: { staggerChildren: 0.15 } },
-        }}
-      >
-        <AnimatePresence>
-          {displayedServices.map((s) => {
+        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {displayed.map((s, i) => {
             const Icon = iconMap[s.icon] || Bug;
             return (
               <motion.article
                 key={s.id}
-                className="group border rounded-2xl p-6 shadow-sm bg-white hover:shadow-lg transition-all cursor-pointer"
-                onClick={() => navigate(`/services/${s.id}`)}
-                variants={cardVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                layout
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.4, delay: (i % 3) * 0.07 }}
+                className="group relative flex flex-col bg-bone border border-bone-300 rounded-2xl overflow-hidden hover:border-brand-300 hover:shadow-xl hover:shadow-brand-950/8 transition-all"
               >
-                {/* Service Icon */}
-                <div className="w-12 h-12 bg-green-100 text-green-700 rounded-lg flex items-center justify-center mb-4 group-hover:bg-green-200 transition">
-                  <Icon size={22} />
-                </div>
+                <Link to={`/services/${s.id}`} className="flex-grow p-6 pb-4">
+                  <span className="inline-flex w-12 h-12 rounded-xl bg-brand-600 text-white items-center justify-center shadow-md shadow-brand-900/20">
+                    <Icon size={22} aria-hidden="true" />
+                  </span>
 
-                <h3 className="font-semibold text-lg text-gray-800">{s.title}</h3>
-                <p className="text-sm text-gray-600 mt-2 leading-relaxed">
-                  {s.short}
-                </p>
+                  <h3 className="mt-4 font-display text-xl font-bold group-hover:text-brand-700 transition-colors">
+                    {s.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-ink-soft leading-relaxed">
+                    {s.short}
+                  </p>
 
-                <div className="mt-6">
-                  <motion.button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      navigate(`/services/${s.id}`);
-                    }}
-                    className="px-3 py-2 mb-5 rounded-md text-sm text-white bg-red-800 hover:bg-red-900 transition-colors"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    Book {s.title}
-                  </motion.button>
-                </div>
+                  <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-brand-700 group-hover:gap-2.5 transition-all">
+                    What&apos;s involved <ArrowRight size={15} aria-hidden="true" />
+                  </span>
+                </Link>
+
+                {/* A call CTA on every card. The visitor who is ready should
+                    never have to navigate to find a phone number. */}
+                <a
+                  href={telHref}
+                  onClick={() => trackCall(`service-card-${s.id}`)}
+                  className="flex items-center justify-center gap-2 px-6 py-3.5 bg-white border-t border-bone-300 text-sm font-bold text-brand-700 hover:bg-brand-600 hover:text-white transition-colors"
+                >
+                  <Phone size={15} aria-hidden="true" /> Call about {s.title.toLowerCase()}
+                </a>
               </motion.article>
             );
           })}
-        </AnimatePresence>
-      </motion.div>
-
-      {/* View All Button */}
-      {!showAll && (
-        <div className="mt-10 text-center">
-          <motion.button
-            onClick={() => setShowAll(true)}
-            // className="px-6 py-3 rounded-lg border bg-red-800 text-white w-[50%] mx-auto"
-            className="px-5 py-3 rounded-md text-sm text-white bg-gray-800 hover:bg-gray-900 transition-colors"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.97 }}
-          >
-             See All Pest Control Services
-          </motion.button>
         </div>
-      )}
+
+        {!showAll && (
+          <div className="mt-10 text-center">
+            <button
+              onClick={() => setShowAll(true)}
+              className="px-7 py-3.5 rounded-xl border-2 border-bone-300 bg-white text-sm font-bold text-ink hover:border-brand-300 hover:text-brand-700 transition-colors"
+            >
+              See all {services.length} treatments
+            </button>
+          </div>
+        )}
+      </div>
     </section>
   );
 }

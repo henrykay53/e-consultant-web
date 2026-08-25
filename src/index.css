@@ -1,28 +1,176 @@
 @import "tailwindcss";
 
-/* html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-} */
+/* ===============================================================
+   E CONSULTANTS GLOBAL TIIJA — DESIGN SYSTEM
+   "Seal & Certificate"
 
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  padding: 0;
-  margin: 0;
-  /* background: rgb(176, 23, 23); */
+   Deep garnet red is the company colour. To make red read as
+   authority rather than alarm it is taken down and desaturated
+   toward oxblood, then paired with brass and warm bone — the
+   palette of licences, seals and certificates, which is exactly
+   the signal this market checks for before letting a stranger
+   into the house.
+   =============================================================== */
+@theme {
+  /* --- Deep garnet: the brand ------------------------------ */
+  --color-brand-50:  #FBF3F3;
+  --color-brand-100: #F6E3E4;
+  --color-brand-200: #E9C2C5;
+  --color-brand-300: #D4949A;
+  --color-brand-400: #B85259;
+  --color-brand-500: #9E2432;
+  --color-brand-600: #8A1626;
+  --color-brand-700: #6E1220;
+  --color-brand-800: #530D18;
+  --color-brand-900: #3A0910;
+  --color-brand-950: #260509;
 
+  /* --- Brass: certification, seals, accents ----------------- */
+  --color-brass-100: #F7EBD4;
+  --color-brass-300: #E3C88A;
+  --color-brass-500: #B8873F;
+  --color-brass-600: #9A6E2E;
+
+  /* --- Warm neutrals --------------------------------------- */
+  --color-bone:      #FAF6F2;
+  --color-bone-200:  #F1EAE3;
+  --color-bone-300:  #E4D9CF;
+
+  --color-ink:       #1A1416;
+  --color-ink-soft:  #4A3F42;
+  --color-ink-muted: #6B5F62;
+
+  /* --- Functional only: verified / safe --------------------- */
+  --color-verified:  #2E7D4F;
+  --color-whatsapp:  #25D366;
+
+  --font-display: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
+  --font-sans: "Public Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
-button {
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
 
-  background-color: rgb(147, 10, 10);
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-ink);
+    background: var(--color-bone);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+  }
 
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+    font-weight: 700;
+  }
+
+  button { cursor: pointer; }
+  img { max-width: 100%; }
+
+  :focus-visible {
+    outline: 3px solid var(--color-brass-500);
+    outline-offset: 2px;
+    border-radius: 3px;
+  }
+
+  ::selection {
+    background: var(--color-brand-600);
+    color: #fff;
+  }
 }
 
-button:hover {
-  cursor: pointer;
-  
+@layer utilities {
+  /* --- Bug patterns ----------------------------------------
+     Insect silhouettes tiled behind high-attention areas. Kept
+     at very low opacity so they read as texture and never
+     compete with the copy sitting on top.
+     --------------------------------------------------------- */
+  .bugs-dark::before,
+  .bugs-light::before,
+  .bugs-sparse::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-repeat: repeat;
+  }
+
+  .bugs-light::before {
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22180%22%20height%3D%22180%22%20viewBox%3D%220%200%20180%20180%22%3E%3Cg%20transform%3D%22translate%2846%2050%29%20rotate%2818%29%20scale%280.85%29%22%20fill%3D%22none%22%20stroke%3D%22%2523000000%22%20stroke-width%3D%222.6%22%20stroke-linecap%3D%22round%22%3E%0A%3Cellipse%20cx%3D%220%22%20cy%3D%224%22%20rx%3D%2211%22%20ry%3D%2217%22%2F%3E%0A%3Cpath%20d%3D%22M0%20-13%20L0%2019%22%2F%3E%0A%3Ccircle%20cx%3D%220%22%20cy%3D%22-16%22%20r%3D%226%22%2F%3E%0A%3Cpath%20d%3D%22M-4%20-21%20C-10%20-28%20-14%20-30%20-19%20-31%22%2F%3E%0A%3Cpath%20d%3D%22M4%20-21%20C10%20-28%2014%20-30%2019%20-31%22%2F%3E%0A%3Cpath%20d%3D%22M-10%20-6%20C-18%20-10%20-22%20-14%20-25%20-19%22%2F%3E%0A%3Cpath%20d%3D%22M10%20-6%20C18%20-10%2022%20-14%2025%20-19%22%2F%3E%0A%3Cpath%20d%3D%22M-11%204%20C-20%204%20-25%203%20-29%201%22%2F%3E%0A%3Cpath%20d%3D%22M11%204%20C20%204%2025%203%2029%201%22%2F%3E%0A%3Cpath%20d%3D%22M-10%2013%20C-18%2017%20-22%2021%20-25%2026%22%2F%3E%0A%3Cpath%20d%3D%22M10%2013%20C18%2017%2022%2021%2025%2026%22%2F%3E%0A%3C%2Fg%3E%3Cg%20transform%3D%22translate%28132%20128%29%20rotate%28-142%29%20scale%280.72%29%22%20fill%3D%22none%22%20stroke%3D%22%2523000000%22%20stroke-width%3D%222.6%22%20stroke-linecap%3D%22round%22%3E%0A%3Cellipse%20cx%3D%220%22%20cy%3D%224%22%20rx%3D%2211%22%20ry%3D%2217%22%2F%3E%0A%3Cpath%20d%3D%22M0%20-13%20L0%2019%22%2F%3E%0A%3Ccircle%20cx%3D%220%22%20cy%3D%22-16%22%20r%3D%226%22%2F%3E%0A%3Cpath%20d%3D%22M-4%20-21%20C-10%20-28%20-14%20-30%20-19%20-31%22%2F%3E%0A%3Cpath%20d%3D%22M4%20-21%20C10%20-28%2014%20-30%2019%20-31%22%2F%3E%0A%3Cpath%20d%3D%22M-10%20-6%20C-18%20-10%20-22%20-14%20-25%20-19%22%2F%3E%0A%3Cpath%20d%3D%22M10%20-6%20C18%20-10%2022%20-14%2025%20-19%22%2F%3E%0A%3Cpath%20d%3D%22M-11%204%20C-20%204%20-25%203%20-29%201%22%2F%3E%0A%3Cpath%20d%3D%22M11%204%20C20%204%2025%203%2029%201%22%2F%3E%0A%3Cpath%20d%3D%22M-10%2013%20C-18%2017%20-22%2021%20-25%2026%22%2F%3E%0A%3Cpath%20d%3D%22M10%2013%20C18%2017%2022%2021%2025%2026%22%2F%3E%0A%3C%2Fg%3E%3C%2Fsvg%3E");
+    background-size: 180px 180px;
+    opacity: 0.045;
+  }
+
+  .bugs-dark::before {
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22180%22%20height%3D%22180%22%20viewBox%3D%220%200%20180%20180%22%3E%3Cg%20transform%3D%22translate%2846%2050%29%20rotate%2818%29%20scale%280.85%29%22%20fill%3D%22none%22%20stroke%3D%22%2523ffffff%22%20stroke-width%3D%222.6%22%20stroke-linecap%3D%22round%22%3E%0A%3Cellipse%20cx%3D%220%22%20cy%3D%224%22%20rx%3D%2211%22%20ry%3D%2217%22%2F%3E%0A%3Cpath%20d%3D%22M0%20-13%20L0%2019%22%2F%3E%0A%3Ccircle%20cx%3D%220%22%20cy%3D%22-16%22%20r%3D%226%22%2F%3E%0A%3Cpath%20d%3D%22M-4%20-21%20C-10%20-28%20-14%20-30%20-19%20-31%22%2F%3E%0A%3Cpath%20d%3D%22M4%20-21%20C10%20-28%2014%20-30%2019%20-31%22%2F%3E%0A%3Cpath%20d%3D%22M-10%20-6%20C-18%20-10%20-22%20-14%20-25%20-19%22%2F%3E%0A%3Cpath%20d%3D%22M10%20-6%20C18%20-10%2022%20-14%2025%20-19%22%2F%3E%0A%3Cpath%20d%3D%22M-11%204%20C-20%204%20-25%203%20-29%201%22%2F%3E%0A%3Cpath%20d%3D%22M11%204%20C20%204%2025%203%2029%201%22%2F%3E%0A%3Cpath%20d%3D%22M-10%2013%20C-18%2017%20-22%2021%20-25%2026%22%2F%3E%0A%3Cpath%20d%3D%22M10%2013%20C18%2017%2022%2021%2025%2026%22%2F%3E%0A%3C%2Fg%3E%3Cg%20transform%3D%22translate%28132%20128%29%20rotate%28-142%29%20scale%280.72%29%22%20fill%3D%22none%22%20stroke%3D%22%2523ffffff%22%20stroke-width%3D%222.6%22%20stroke-linecap%3D%22round%22%3E%0A%3Cellipse%20cx%3D%220%22%20cy%3D%224%22%20rx%3D%2211%22%20ry%3D%2217%22%2F%3E%0A%3Cpath%20d%3D%22M0%20-13%20L0%2019%22%2F%3E%0A%3Ccircle%20cx%3D%220%22%20cy%3D%22-16%22%20r%3D%226%22%2F%3E%0A%3Cpath%20d%3D%22M-4%20-21%20C-10%20-28%20-14%20-30%20-19%20-31%22%2F%3E%0A%3Cpath%20d%3D%22M4%20-21%20C10%20-28%2014%20-30%2019%20-31%22%2F%3E%0A%3Cpath%20d%3D%22M-10%20-6%20C-18%20-10%20-22%20-14%20-25%20-19%22%2F%3E%0A%3Cpath%20d%3D%22M10%20-6%20C18%20-10%2022%20-14%2025%20-19%22%2F%3E%0A%3Cpath%20d%3D%22M-11%204%20C-20%204%20-25%203%20-29%201%22%2F%3E%0A%3Cpath%20d%3D%22M11%204%20C20%204%2025%203%2029%201%22%2F%3E%0A%3Cpath%20d%3D%22M-10%2013%20C-18%2017%20-22%2021%20-25%2026%22%2F%3E%0A%3Cpath%20d%3D%22M10%2013%20C18%2017%2022%2021%2025%2026%22%2F%3E%0A%3C%2Fg%3E%3C%2Fsvg%3E");
+    background-size: 180px 180px;
+    opacity: 0.07;
+  }
+
+  .bugs-sparse::before {
+    background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22260%22%20height%3D%22260%22%20viewBox%3D%220%200%20260%20260%22%3E%3Cg%20transform%3D%22translate%2870%2074%29%20rotate%28-12%29%20scale%281.0%29%22%20fill%3D%22none%22%20stroke%3D%22%2523ffffff%22%20stroke-width%3D%222.6%22%20stroke-linecap%3D%22round%22%3E%0A%3Cellipse%20cx%3D%220%22%20cy%3D%224%22%20rx%3D%2211%22%20ry%3D%2217%22%2F%3E%0A%3Cpath%20d%3D%22M0%20-13%20L0%2019%22%2F%3E%0A%3Ccircle%20cx%3D%220%22%20cy%3D%22-16%22%20r%3D%226%22%2F%3E%0A%3Cpath%20d%3D%22M-4%20-21%20C-10%20-28%20-14%20-30%20-19%20-31%22%2F%3E%0A%3Cpath%20d%3D%22M4%20-21%20C10%20-28%2014%20-30%2019%20-31%22%2F%3E%0A%3Cpath%20d%3D%22M-10%20-6%20C-18%20-10%20-22%20-14%20-25%20-19%22%2F%3E%0A%3Cpath%20d%3D%22M10%20-6%20C18%20-10%2022%20-14%2025%20-19%22%2F%3E%0A%3Cpath%20d%3D%22M-11%204%20C-20%204%20-25%203%20-29%201%22%2F%3E%0A%3Cpath%20d%3D%22M11%204%20C20%204%2025%203%2029%201%22%2F%3E%0A%3Cpath%20d%3D%22M-10%2013%20C-18%2017%20-22%2021%20-25%2026%22%2F%3E%0A%3Cpath%20d%3D%22M10%2013%20C18%2017%2022%2021%2025%2026%22%2F%3E%0A%3C%2Fg%3E%3C%2Fsvg%3E");
+    background-size: 260px 260px;
+    opacity: 0.05;
+  }
+
+  /* One vertical rhythm for every section. */
+  .section-y { padding-block: 4rem; }
+  @media (min-width: 768px) { .section-y { padding-block: 5.5rem; } }
+
+  /* Clears the fixed mobile call bar. */
+  .pb-action-bar { padding-bottom: 5.25rem; }
+  @media (min-width: 768px) { .pb-action-bar { padding-bottom: 0; } }
+
+  /* Small uppercase label used above section headings. */
+  .eyebrow {
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  /* Hairline rule in brass, used under credentials. */
+  .rule-brass {
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--color-brass-500),
+      transparent
+    );
+    height: 1px;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 100;
+  }
+  .skip-link:focus {
+    left: 1rem;
+    top: 1rem;
+    background: var(--color-brand-700);
+    color: #fff;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.375rem;
+  }
+
+  .tabular { font-variant-numeric: tabular-nums; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

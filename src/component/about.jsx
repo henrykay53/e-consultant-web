@@ -1,136 +1,120 @@
-import { Target, BadgeCheck, Leaf } from "lucide-react";
-import { Helmet } from "react-helmet-async";
+import { Target, BadgeCheck, Leaf, ShieldCheck } from "lucide-react";
+import Seo from "./seo";
+import PageHeader from "./pageHeader";
 import AboutUsCounter from "./aboutCounter";
-import Carousel from "./ourClients";
-import {femi, chinedu, benard} from "../assets/images";
+import OurClients from "./ourClients";
+import CallBand from "./callBand";
+import ClosingCta from "./closingCta";
+import { femi, chinedu, benard } from "../assets/images";
+import { company, yearsOperating } from "../siteConfig";
 
-const About = () => {
-  const team = [
-    {
-      name: "Benard",
-      role: "Sprayer Technician",
-      img: benard,
-    },
-    {
-      name: "Femi",
-      role: "Fogger Technician",
-      img: femi,
-    },
-    {
-      name: "Chinedu",
-      role: "Fumigation Support",
-      img: chinedu,
-    },
-  ];
+const team = [
+  { name: "Benard", role: "Sprayer Technician", img: benard },
+  { name: "Femi", role: "Fogger Technician", img: femi },
+  { name: "Chinedu", role: "Fumigation Support", img: chinedu },
+];
 
-  return (
-    <main className="max-w-6xl mx-auto px-4 py-12">
-      {/* SEO Meta */}
-      <Helmet>
-        <title>
-          About E Consultants Global Tiija LTD | Licensed Pest Control & Fumigation in Lagos
-        </title>
-        <meta
-          name="description"
-          content="Learn about E Consultants Global Tiija LTD, a licensed pest control and fumigation company in Lagos, Nigeria. We provide eco-friendly, government-approved pest solutions for homes, offices, and industries."
-        />
-        <meta
-          name="keywords"
-          content="pest control Lagos, fumigation Lagos, eco-friendly fumigation Nigeria, licensed pest control company, termite treatment Lagos, rodent extermination Nigeria"
-        />
-      </Helmet>
+const pillars = [
+  {
+    icon: Target,
+    title: "Our mission",
+    body: "To clear pests properly the first time, without cutting corners on safety, and to leave a household feeling looked after rather than sprayed at.",
+  },
+  {
+    icon: BadgeCheck,
+    title: "Licensed & compliant",
+    body: "A CAC-registered limited company, insured, using only regulator-approved products. We provide a treatment certificate on every job.",
+  },
+  {
+    icon: Leaf,
+    title: "Safe by design",
+    body: "Child and pet-safe formulations wherever the job allows, with written re-entry times before we leave your property.",
+  },
+];
 
-      {/* Intro Section */}
-      <section className="text-center mb-14">
-        <h1 className="text-2xl md:text-4xl font-extrabold text-gray-900">
-          About <span className="text-red-700">E Consultants Global Tiija LTD</span>
-        </h1>
-        <p className="text-lg text-gray-600 mt-5 max-w-3xl mx-auto leading-relaxed">
-          At <strong>E Consultants Global Tiija LTD</strong>, we are a{" "}
-          <strong>licensed fumigation and pest control company in Lagos, Nigeria</strong>.
-          Our goal is to protect homes, offices, and industries with{" "}
-          <span className="font-semibold">eco-friendly, safe, and long-lasting pest management solutions</span>.
-          With certified technicians and state-of-the-art equipment, we ensure you enjoy a pest-free environment.
-        </p>
-      </section>
+const About = () => (
+  <>
+    <Seo
+      title="About Us"
+      description={`${company.legalName} — a licensed fumigation and pest control company serving Lagos Island and Mainland since ${company.foundedYear}.`}
+      path="/about"
+    />
 
-      {/* Features Section */}
-      <section
-        aria-label="Company Features"
-        className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20"
-      >
-        {/* Mission */}
-        <article className="bg-white p-8 rounded-2xl shadow-md hover:shadow-lg transition-all text-center">
-          <Target className="w-10 h-10 text-red-600 mx-auto mb-4" />
-          <h2 className="text-xl font-semibold text-gray-900">Our Mission</h2>
-          <p className="text-gray-600 mt-3 leading-relaxed">
-            To deliver safe, effective, and eco-friendly pest control solutions
-            that protect lives, property, and the environment while ensuring
-            peace of mind for our clients.
-          </p>
-        </article>
+    <PageHeader
+      eyebrow={`Since ${company.foundedYear}`}
+      title="The same team, for a quarter of a century"
+      lede={`${company.legalName} has been treating homes, estates and businesses across Lagos for ${yearsOperating} years. Our technicians are trained in-house — we don't subcontract day labour into your home.`}
+    />
 
-        {/* Certifications */}
-        <article className="bg-white p-8 rounded-2xl shadow-md hover:shadow-lg transition-all text-center">
-          <BadgeCheck className="w-10 h-10 text-green-600 mx-auto mb-4" />
-          <h2 className="text-xl font-semibold text-gray-900">Certifications & Compliance</h2>
-          <p className="text-gray-600 mt-3 leading-relaxed">
-            We are licensed by Nigerian regulatory authorities, insured for your safety,
-            and use only <strong>government-approved, eco-friendly products</strong> that
-            meet global best practices.
-          </p>
-        </article>
-
-        {/* Safety */}
-        <article className="bg-white p-8 rounded-2xl shadow-md hover:shadow-lg transition-all text-center">
-          <Leaf className="w-10 h-10 text-emerald-600 mx-auto mb-4" />
-          <h2 className="text-xl font-semibold text-gray-900">Safety & Eco-Friendliness</h2>
-          <p className="text-gray-600 mt-3 leading-relaxed">
-            Our treatments prioritize human health, pets, and the environment. We provide clear
-            re-entry guidelines to ensure safety after every fumigation service.
-          </p>
-        </article>
-      </section>
-
-      {/* Counter Section */}
-      <section aria-label="Company Achievements" className="mb-20">
-        <AboutUsCounter />
-      </section>
-
-      {/* Meet the Team */}
-      <section aria-label="Meet Our Experts" className="text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Meet Our Experts</h2>
-        <p className="text-gray-600 mt-4 max-w-2xl mx-auto leading-relaxed">
-          Our team consists of trained, certified, and passionate professionals dedicated
-          to protecting your space from harmful pests while providing excellent customer service.
-        </p>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 mt-10">
-          {team.map((member, index) => (
+    <section className="bg-white section-y">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid md:grid-cols-3 gap-6">
+          {pillars.map(({ icon: Icon, title, body }) => (
             <article
-              key={index}
-              className="bg-white rounded-2xl shadow-md hover:shadow-lg transition-all p-4"
+              key={title}
+              className="bg-bone border border-bone-300 p-7 rounded-2xl hover:border-brand-300 transition-colors"
             >
-              <figure className="flex items-center gap-x-4">
+              <span className="inline-flex w-12 h-12 rounded-xl bg-brand-600 text-white items-center justify-center shadow-md shadow-brand-900/20">
+                <Icon size={22} aria-hidden="true" />
+              </span>
+              <h2 className="mt-4 font-display text-xl font-bold">{title}</h2>
+              <p className="text-ink-soft mt-2.5 leading-relaxed text-sm">{body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <AboutUsCounter />
+
+    <section className="relative overflow-hidden bg-bone bugs-light section-y">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <p className="eyebrow text-brass-600">The people who turn up</p>
+        <h2 className="mt-3 text-4xl font-bold">Meet the technicians</h2>
+        <p className="text-ink-soft mt-4 max-w-2xl mx-auto leading-relaxed">
+          The same faces, job after job. Each one carries photo ID your estate
+          security can check before they come through the gate.
+        </p>
+
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 mt-12">
+          {team.map((member) => (
+            <article
+              key={member.name}
+              className="bg-white rounded-2xl border border-bone-300 p-6 hover:shadow-xl hover:shadow-brand-950/8 transition-shadow"
+            >
+              <figure className="flex items-center gap-4">
                 <img
                   src={member.img}
                   alt={`${member.name}, ${member.role}`}
-                  className="w-20 h-20 rounded-full object-cover border-4 border-gray-100"
+                  width="160"
+                  height="160"
+                  loading="lazy"
+                  className="w-20 h-20 rounded-full object-cover border-4 border-bone-200"
                 />
                 <figcaption className="text-left">
-                  <h3 className="text-lg font-semibold text-gray-900">{member.name}</h3>
-                  <p className="text-sm text-gray-500">{member.role}</p>
+                  <h3 className="font-display text-lg font-bold">{member.name}</h3>
+                  <p className="text-sm text-ink-muted">{member.role}</p>
+                  <p className="mt-1.5 inline-flex items-center gap-1 text-xs font-semibold text-verified">
+                    <ShieldCheck size={12} aria-hidden="true" /> ID verified
+                  </p>
                 </figcaption>
               </figure>
             </article>
           ))}
         </div>
+      </div>
+    </section>
 
-      </section>
+    <OurClients />
 
-      <Carousel />
-    </main>
-  );
-};
+    <CallBand
+      heading="Talk to the people who'll do the work"
+      body="No call centre, no middleman. You speak to the team that turns up at your gate."
+      source="band-about"
+    />
+
+    <ClosingCta />
+  </>
+);
 
 export default About;
