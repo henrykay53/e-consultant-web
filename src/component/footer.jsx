@@ -21,7 +21,6 @@ const quickLinks = [
   { path: "/about", label: "About us" },
   { path: "/blog", label: "Blog" },
   { path: "/contact", label: "Contact" },
-  { path: "/privacy", label: "Privacy policy" },
 ];
 
 const socialLinks = [
@@ -35,7 +34,7 @@ const Footer = () => {
 
   return (
     <footer className="relative overflow-hidden bg-brand-950 bugs-dark text-brand-100/75 mt-auto">
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-28">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <div className="flex items-center gap-2.5">

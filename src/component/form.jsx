@@ -227,11 +227,8 @@ const Form = ({
 
       <p className="mt-3 text-xs text-ink-muted">
         We will send your details and open WhatsApp so you can talk to us right
-        away. We never share your information — see our{" "}
-        <a href="/privacy" className="underline hover:text-brand-700">
-          privacy policy
-        </a>
-        .
+        away. We only use your number to quote and book your job — we never
+        share it with anyone else.
       </p>
 
       <div aria-live="polite">

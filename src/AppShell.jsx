@@ -19,7 +19,7 @@ const AppShell = ({ children }) => (
 
     <div className="flex flex-col min-h-screen bg-white text-ink">
       <Header />
-      <main id="main" className="flex-grow pb-action-bar">
+      <main id="main" className="flex-grow">
         {children}
       </main>
       <Footer />

@@ -126,9 +126,6 @@
   @media (min-width: 768px) { .section-y { padding-block: 5.5rem; } }
 
   /* Clears the fixed mobile call bar. */
-  .pb-action-bar { padding-bottom: 5.25rem; }
-  @media (min-width: 768px) { .pb-action-bar { padding-bottom: 0; } }
-
   /* Small uppercase label used above section headings. */
   .eyebrow {
     font-size: 0.6875rem;
@@ -164,9 +161,55 @@
   }
 
   .tabular { font-variant-numeric: tabular-nums; }
+
+  /* --- Logo marquee ----------------------------------------
+     Two identical groups scroll as one track. Shifting by half
+     the track plus half a gap lands group two exactly where
+     group one began, so the loop has no visible seam. CSS
+     animation rather than JS so it stays on the compositor and
+     pauses on hover for free. */
+  .marquee {
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+  }
+
+  .marquee-track {
+    --marquee-gap: 4.5rem;
+    display: flex;
+    width: max-content;
+    gap: var(--marquee-gap);
+    animation: marquee-scroll 46s linear infinite;
+  }
+
+  .marquee:hover .marquee-track,
+  .marquee:focus-within .marquee-track {
+    animation-play-state: paused;
+  }
+
+  .marquee-group {
+    display: flex;
+    align-items: center;
+    gap: var(--marquee-gap);
+    flex: none;
+  }
+
+  @keyframes marquee-scroll {
+    to { transform: translateX(calc(-50% - var(--marquee-gap) / 2)); }
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .marquee { -webkit-mask-image: none; mask-image: none; }
+  .marquee-track {
+    animation: none;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .marquee-group[data-clone="true"] { display: none; }
+  .marquee-dup { display: none; }
+
   html { scroll-behavior: auto; }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;

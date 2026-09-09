@@ -15,6 +15,5 @@ export const routes = [
   { path: "/blog", importer: () => import("./component/blog") },
   { path: "/blog/:id", importer: () => import("./component/blogDetails") },
   { path: "/contact", importer: () => import("./component/contactUs") },
-  { path: "/privacy", importer: () => import("./component/privacy") },
   { path: "*", importer: () => import("./component/notFound") },
 ];

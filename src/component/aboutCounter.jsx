@@ -1,94 +1,83 @@
-import React, { useEffect, useState } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { useInView, useReducedMotion } from "framer-motion";
 import { Users, Clock, UserCheck } from "lucide-react";
 import { yearsOperating } from "../siteConfig";
 
-const aboutCounter = {
-  numberOfClients: 150,
-  numberOfYearsOperational: yearsOperating,
-  numberOfPersonnels: 7,
-};
+const stats = [
+  { icon: Users, label: "Clients served", value: 150, suffix: "+" },
+  { icon: Clock, label: "Years in business", value: yearsOperating, suffix: "+" },
+  { icon: UserCheck, label: "Trained technicians", value: 7, suffix: "" },
+];
 
-const CounterItem = ({ icon: Icon, label, value, suffix = "" }) => {
-  const [count, setCount] = useState(0);
-  const controls = useAnimation();
+const DURATION = 1400;
+
+const CounterItem = ({ icon: Icon, label, value, suffix }) => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, amount: 0.4 });
+  const reduceMotion = useReducedMotion();
+
+  // Server-rendered output carries the real figure, so the numbers are in
+  // the prerendered HTML for crawlers and for anyone without JavaScript.
+  // The browser starts from zero and counts up when the row scrolls in.
+  const [count, setCount] = useState(() =>
+    typeof window === "undefined" ? value : 0
+  );
 
   useEffect(() => {
-    let start = 0;
-    const end = value;
-    const duration = 1500;
-    const incrementTime = 20;
-    const step = Math.ceil((end / duration) * incrementTime);
+    if (!inView) return undefined;
+    if (reduceMotion) {
+      setCount(value);
+      return undefined;
+    }
 
-    const timer = setInterval(() => {
-      start += step;
-      if (start >= end) {
-        start = end;
-        clearInterval(timer);
-      }
-      setCount(start);
-    }, incrementTime);
+    let frame;
+    const start = performance.now();
 
-    return () => clearInterval(timer);
-  }, [value]);
+    // Eased by elapsed time rather than a fixed step, so every counter
+    // finishes together regardless of how large its number is.
+    const tick = (now) => {
+      const progress = Math.min((now - start) / DURATION, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.round(value * eased));
+      if (progress < 1) frame = requestAnimationFrame(tick);
+    };
+
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+  }, [inView, reduceMotion, value]);
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      animate={controls}
-      onViewportEnter={() => controls.start({ opacity: 1, y: 0 })}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className="flex flex-col items-center text-center w-full max-w-xs px-6 py-4"
+    <div
+      ref={ref}
+      className="flex flex-col items-center text-center px-6 py-2"
     >
-      <motion.div
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        className="flex items-center justify-center w-14 h-14 rounded-2xl bg-white/10 border border-white/15 mb-4"
-      >
-        <Icon className="w-7 h-7 text-brass-300" />
-      </motion.div>
+      <span className="flex items-center justify-center w-12 h-12 rounded-2xl bg-white/10 border border-white/15 mb-5">
+        <Icon className="w-6 h-6 text-brass-300" aria-hidden="true" />
+      </span>
 
-      <span className="font-display text-5xl font-bold text-white tabular">
+      <span className="font-display text-5xl md:text-6xl font-bold text-white tabular leading-none">
         {count}
         {suffix}
       </span>
-      <p className="text-sm text-brand-100/75 mt-2">{label}</p>
-    </motion.div>
+
+      <span className="mt-3 h-px w-8 bg-brass-500/50" aria-hidden="true" />
+
+      <p className="mt-3 eyebrow text-brand-100/70">{label}</p>
+    </div>
   );
 };
 
 export default function AboutUsCounter() {
-  const [hasRun, setHasRun] = useState(false);
-
-  useEffect(() => {
-    if (!hasRun) {
-      setHasRun(true);
-    }
-  }, [hasRun]);
-
-  if (!hasRun) return null;
-
   return (
-    <section className="relative overflow-hidden w-full bg-brand-900 bugs-dark section-y">
-      <div className="relative max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-8 justify-items-center px-4">
-        <CounterItem
-          icon={Users}
-          label="Happy Clients"
-          value={aboutCounter.numberOfClients}
-          suffix="+"
-        />
-        <CounterItem
-          icon={Clock}
-          label="Years Operational"
-          value={aboutCounter.numberOfYearsOperational}
-          suffix="+"
-        />
-        <CounterItem
-          icon={UserCheck}
-          label="Personnels"
-          value={aboutCounter.numberOfPersonnels}
-        />
+    <section className="relative overflow-hidden bg-brand-900 bugs-dark section-y">
+      <div className="relative max-w-5xl mx-auto px-4">
+        <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-white/10">
+          {stats.map((stat) => (
+            <div key={stat.label} className="py-8 sm:py-0">
+              <CounterItem {...stat} />
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

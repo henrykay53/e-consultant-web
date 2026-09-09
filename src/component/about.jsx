@@ -1,11 +1,14 @@
-import { Target, BadgeCheck, Leaf, ShieldCheck } from "lucide-react";
+import {
+  Target, BadgeCheck, Leaf, ShieldCheck, FileCheck2,
+  SprayCan, Truck,
+} from "lucide-react";
 import Seo from "./seo";
 import PageHeader from "./pageHeader";
 import AboutUsCounter from "./aboutCounter";
 import OurClients from "./ourClients";
 import CallBand from "./callBand";
 import ClosingCta from "./closingCta";
-import { femi, chinedu, benard } from "../assets/images";
+import { femi, chinedu, benard, fumigateImg } from "../assets/images";
 import { company, yearsOperating } from "../siteConfig";
 
 const team = [
@@ -23,13 +26,18 @@ const pillars = [
   {
     icon: BadgeCheck,
     title: "Licensed & compliant",
-    body: "A CAC-registered limited company, insured, using only regulator-approved products. We provide a treatment certificate on every job.",
+    body: "A CAC-registered limited company, insured, using only regulator-approved products. We issue a treatment certificate on every job.",
   },
   {
     icon: Leaf,
     title: "Safe by design",
-    body: "Child and pet-safe formulations wherever the job allows, with written re-entry times before we leave your property.",
+    body: "Child and pet-safe formulations wherever the job allows, with written re-entry times handed over before we leave your property.",
   },
+];
+
+const credentials = [
+  { icon: FileCheck2, label: "CAC registered", detail: "Limited liability company" },
+  { icon: SprayCan, label: "Approved products", detail: "Regulator-listed only" },
 ];
 
 const About = () => (
@@ -46,7 +54,85 @@ const About = () => (
       lede={`${company.legalName} has been treating homes, estates and businesses across Lagos for ${yearsOperating} years. Our technicians are trained in-house — we don't subcontract day labour into your home.`}
     />
 
+    {/* Credentials sit directly under the header: the first thing a cautious
+        buyer wants is proof, not narrative. */}
+    <section className="bg-white border-b border-bone-300">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <ul className="flex flex-wrap justify-center gap-x-14 gap-y-6">
+          {credentials.map(({ icon: Icon, label, detail }) => (
+            <li key={label} className="flex items-start gap-3">
+              <span className="inline-flex w-10 h-10 rounded-xl bg-brand-50 text-brand-600 items-center justify-center shrink-0">
+                <Icon size={18} aria-hidden="true" />
+              </span>
+              <span>
+                <span className="block font-bold text-sm leading-tight">{label}</span>
+                <span className="block text-xs text-ink-muted mt-0.5">{detail}</span>
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    {/* Story */}
     <section className="bg-white section-y">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="relative">
+          <img
+            src={fumigateImg}
+            alt="An E Consultants technician treating a property in Lagos"
+            width="1200"
+            height="900"
+            loading="lazy"
+            className="w-full h-72 md:h-[26rem] object-cover rounded-2xl border-4 border-white shadow-2xl shadow-brand-950/15"
+          />
+          <div className="absolute -bottom-5 -right-2 sm:right-6 bg-brand-900 text-white rounded-2xl px-6 py-4 shadow-xl shadow-brand-950/30">
+            <p className="font-display text-3xl font-bold tabular leading-none">
+              {yearsOperating}
+            </p>
+            <p className="eyebrow text-brass-300 mt-1.5">Years on the job</p>
+          </div>
+        </div>
+
+        <div>
+          <p className="eyebrow text-brass-600">How we work</p>
+          <h2 className="mt-3 text-3xl md:text-4xl font-bold leading-tight">
+            Inspection first. Always.
+          </h2>
+          <div className="mt-5 space-y-4 text-ink-soft leading-relaxed">
+            <p>
+              Most pest problems in Lagos get treated twice because nobody
+              looked properly the first time. A blanket spray clears what you
+              can see and leaves the nest where it is, so four weeks later
+              you&apos;re making the same phone call.
+            </p>
+            <p>
+              We inspect before we quote — drains, soakaways, roof voids, the
+              back of the kitchen units. Then we treat the source, write down
+              exactly what we used, and hand you a certificate for your estate
+              or facility manager.
+            </p>
+            <p>
+              If they come back inside thirty days, so do we. At no cost.
+            </p>
+          </div>
+
+          <ul className="mt-7 space-y-3">
+            {[
+              [Truck, "Discreet, unmarked vehicles — your neighbours don't need to know"],
+              [FileCheck2, "A written treatment certificate on completion"],
+            ].map(([Icon, text]) => (
+              <li key={text} className="flex items-start gap-3">
+                <Icon size={18} className="text-brand-600 shrink-0 mt-0.5" aria-hidden="true" />
+                <span className="text-sm text-ink-soft">{text}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section className="bg-white section-y pt-0">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-3 gap-6">
           {pillars.map(({ icon: Icon, title, body }) => (
@@ -80,7 +166,7 @@ const About = () => (
           {team.map((member) => (
             <article
               key={member.name}
-              className="bg-white rounded-2xl border border-bone-300 p-6 hover:shadow-xl hover:shadow-brand-950/8 transition-shadow"
+              className="bg-white rounded-2xl border border-bone-300 p-6 hover:border-brand-300 hover:shadow-xl hover:shadow-brand-950/8 transition-all"
             >
               <figure className="flex items-center gap-4">
                 <img

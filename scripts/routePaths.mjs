@@ -41,7 +41,6 @@ export const staticPaths = [
   "/about",
   "/blog",
   "/contact",
-  "/privacy",
 ];
 
 export const routePaths = [
