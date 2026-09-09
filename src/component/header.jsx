@@ -93,7 +93,7 @@ const Header = () => {
 
             <nav
               aria-label="Main navigation"
-              className="hidden lg:flex items-center gap-7 ml-4"
+              className="hidden lg:flex items-center gap-7 ml-auto"
             >
               {navLinks.map((link) => (
                 <NavLink
@@ -111,10 +111,6 @@ const Header = () => {
                 </NavLink>
               ))}
             </nav>
-
-            <div className="hidden lg:block">
-              <CallButton source="header" size="md" />
-            </div>
 
             <button
               ref={triggerRef}
