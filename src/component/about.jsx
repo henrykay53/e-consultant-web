@@ -57,16 +57,22 @@ const About = () => (
     {/* Credentials sit directly under the header: the first thing a cautious
         buyer wants is proof, not narrative. */}
     <section className="bg-white border-b border-bone-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <ul className="flex flex-wrap justify-center gap-x-14 gap-y-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+        {/* Two equal cards side by side at every width. On phones each card
+            stacks icon over text and centres it, so the pair reads as a
+            matched set instead of two ragged, wrapped lines. */}
+        <ul className="grid grid-cols-2 gap-3 sm:gap-5 max-w-xl mx-auto">
           {credentials.map(({ icon: Icon, label, detail }) => (
-            <li key={label} className="flex items-start gap-3">
-              <span className="inline-flex w-10 h-10 rounded-xl bg-brand-50 text-brand-600 items-center justify-center shrink-0">
-                <Icon size={18} aria-hidden="true" />
+            <li
+              key={label}
+              className="flex flex-col items-center text-center gap-2.5 rounded-2xl border border-bone-300 bg-bone px-3 py-4 sm:flex-row sm:items-center sm:text-left sm:gap-3.5 sm:px-5"
+            >
+              <span className="inline-flex w-11 h-11 rounded-xl bg-brand-600 text-white items-center justify-center shrink-0 shadow-md shadow-brand-900/20">
+                <Icon size={20} aria-hidden="true" />
               </span>
-              <span>
+              <span className="min-w-0">
                 <span className="block font-bold text-sm leading-tight">{label}</span>
-                <span className="block text-xs text-ink-muted mt-0.5">{detail}</span>
+                <span className="block text-xs text-ink-muted mt-1 leading-snug">{detail}</span>
               </span>
             </li>
           ))}

@@ -19,12 +19,25 @@ const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const panelRef = useRef(null);
   const triggerRef = useRef(null);
+  // Whether the menu was last opened or closed from the keyboard. Moving
+  // focus into the drawer and back to the hamburger is essential for
+  // keyboard users, but doing it after a tap or click makes browsers
+  // (Safari and iOS especially) draw the focus ring on the hamburger.
+  const keyboardRef = useRef(false);
+
+  const closeMenu = (e) => {
+    keyboardRef.current = e?.detail === 0; // keyboard-activated clicks report detail 0
+    setIsOpen(false);
+  };
 
   useEffect(() => {
     if (!isOpen) return;
 
     const onKeyDown = (e) => {
-      if (e.key === "Escape") setIsOpen(false);
+      if (e.key === "Escape") {
+        keyboardRef.current = true;
+        setIsOpen(false);
+      }
     };
 
     const previousOverflow = document.body.style.overflow;
@@ -32,12 +45,14 @@ const Header = () => {
 
     document.body.style.overflow = "hidden";
     document.addEventListener("keydown", onKeyDown);
-    panelRef.current?.querySelector("a, button")?.focus();
+    if (keyboardRef.current) {
+      panelRef.current?.querySelector("a, button")?.focus();
+    }
 
     return () => {
       document.body.style.overflow = previousOverflow;
       document.removeEventListener("keydown", onKeyDown);
-      trigger?.focus();
+      if (keyboardRef.current) trigger?.focus();
     };
   }, [isOpen]);
 
@@ -115,10 +130,13 @@ const Header = () => {
             <button
               ref={triggerRef}
               type="button"
-              onClick={() => setIsOpen(true)}
+              onClick={(e) => {
+                keyboardRef.current = e.detail === 0;
+                setIsOpen(true);
+              }}
               aria-label="Open menu"
               aria-expanded={isOpen}
-              className="lg:hidden p-2 -mr-2 text-ink"
+              className="lg:hidden p-2 -mr-2 text-ink [-webkit-tap-highlight-color:transparent]"
             >
               <Menu size={26} />
             </button>
@@ -130,7 +148,7 @@ const Header = () => {
         <div className="fixed inset-0 z-50 lg:hidden">
           <div
             className="absolute inset-0 bg-brand-950/60 backdrop-blur-sm"
-            onClick={() => setIsOpen(false)}
+            onClick={closeMenu}
           />
 
           <div
@@ -149,7 +167,7 @@ const Header = () => {
               </div>
               <button
                 type="button"
-                onClick={() => setIsOpen(false)}
+                onClick={closeMenu}
                 aria-label="Close menu"
                 className="p-1.5 -mr-1 text-ink-muted hover:text-ink"
               >
@@ -169,7 +187,10 @@ const Header = () => {
                 <NavLink
                   key={link.path}
                   to={link.path}
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => {
+                    keyboardRef.current = false;
+                    setIsOpen(false);
+                  }}
                   className={({ isActive }) =>
                     `px-3 py-3.5 rounded-lg font-semibold transition-colors ${
                       isActive

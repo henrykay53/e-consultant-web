@@ -3,8 +3,11 @@ import { useInView, useReducedMotion } from "framer-motion";
 import { Users, Clock, UserCheck } from "lucide-react";
 import { yearsOperating } from "../siteConfig";
 
+// `value` must be a plain number (10000, not "10,000") — the count-up
+// animation multiplies it, and text with a comma turns into NaN.
+// Thousands separators are added when the number is displayed.
 const stats = [
-  { icon: Users, label: "Fumigation sessions", value: "10,000", suffix: "+" },
+  { icon: Users, label: "Fumigation sessions", value: 10000, suffix: "+" },
   { icon: Clock, label: "Years in business", value: yearsOperating, suffix: "+" },
   { icon: UserCheck, label: "Trained technicians", value: 7, suffix: "" },
 ];
@@ -56,7 +59,7 @@ const CounterItem = ({ icon: Icon, label, value, suffix }) => {
       </span>
 
       <span className="font-display text-5xl md:text-6xl font-bold text-white tabular leading-none">
-        {count}
+        {count.toLocaleString("en-NG")}
         {suffix}
       </span>
 
