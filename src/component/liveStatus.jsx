@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { isOpenNow } from "./availability";
+import { isOpenNow, hoursSummary } from "./availability";
 
 /**
  * "Will anyone actually pick up?" is the last hesitation before a call.
@@ -33,7 +33,7 @@ const LiveStatus = ({ onDark = false }) => {
           }`}
         />
       </span>
-      {open ? "Answering calls now" : "Lines open 7am – 8pm · WhatsApp anytime"}
+      {open ? "Answering calls now" : `Lines open ${hoursSummary()} · WhatsApp anytime`}
     </span>
   );
 };

@@ -11,20 +11,35 @@ export const company = {
   // the structured-data @id all derive from this — never hardcode the host.
   url: "https://econsultantsglobaltiija.com.ng",
 
-  phone: "+2349056981893",
-  phoneDisplay: "0905 698 1893",
-  whatsapp: "2349056981893",
+  // Must match the Google Business Profile exactly — Google cross-checks the
+  // name, address and phone on the site against the listing.
+  phone: "+2348022235317",
+  phoneDisplay: "0802 223 5317",
+  whatsapp: "2348022235317",
   email: "econsultantglobaltiija@gmail.com",
 
-  addressLine: "12 Angelica Avenue, GoodHomes Estate, Ajah, Lagos",
-  street: "12 Angelica Avenue, GoodHomes Estate",
+  addressLine: "Renaissance Place, Good Homes Estate, Lekki, Ajah, Lagos 101245",
+  street: "Renaissance Place, Good Homes Estate, Lekki",
+  postalCode: "101245",
   locality: "Ajah",
   city: "Lagos",
   region: "Lagos State",
   country: "NG",
 
   foundedYear: 2000,
-  openingHours: "Mo-Sa 08:00-18:00",
+  // Opening hours — must match the Google Business Profile.
+  // 24-hour "HH:MM"; null means closed. Everything else derives from this:
+  // the footer, the Contact page, the live "answering calls now" badge and
+  // the hours Google reads from the structured data.
+  hours: {
+    Mon: ["08:00", "17:00"],
+    Tue: ["08:00", "17:00"],
+    Wed: ["08:00", "17:00"],
+    Thu: ["08:00", "17:00"],
+    Fri: ["08:00", "17:00"],
+    Sat: ["08:00", "17:00"],
+    Sun: null,
+  },
   gaId: "G-PEN5VGLJFT",
 
   // TODO(owner): paste real profile URLs. Empty values stay hidden in the UI.

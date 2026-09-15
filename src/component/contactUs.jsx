@@ -5,6 +5,7 @@ import Form from "./form";
 import LiveStatus from "./liveStatus";
 import { company, telHref, mailHref, waHref } from "../siteConfig";
 import { trackCall, trackEmail, trackWhatsApp } from "../helper";
+import { hoursSummary } from "./availability";
 
 const Contact = () => (
   <>
@@ -93,7 +94,7 @@ const Contact = () => (
                 </span>
                 <span>
                   <span className="font-bold block">Opening hours</span>
-                  <span className="text-sm text-ink-soft">Monday – Saturday, 7am – 8pm</span>
+                  <span className="text-sm text-ink-soft">{hoursSummary({ long: true })}</span>
                 </span>
               </div>
 

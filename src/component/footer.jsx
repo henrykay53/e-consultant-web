@@ -13,6 +13,7 @@ import {
 import { company, telHref, mailHref, yearsOperating } from "../siteConfig";
 import { services, serviceAreas } from "../data";
 import { trackCall, trackEmail } from "../helper";
+import { hoursSummary } from "./availability";
 
 const quickLinks = [
   { path: "/services", label: "Services" },
@@ -157,7 +158,7 @@ const Footer = () => {
               </li>
               <li className="flex items-start gap-2.5">
                 <Clock3 size={16} className="text-brass-300 shrink-0 mt-0.5" />
-                Mon – Sat, 7am – 8pm
+                {hoursSummary()}
               </li>
               <li className="flex items-start gap-2.5 text-brass-300 font-medium pt-1">
                 <ShieldCheck size={16} className="shrink-0 mt-0.5" />

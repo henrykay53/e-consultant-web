@@ -344,7 +344,7 @@ export const serviceAreas = [
     blurb:
       "Same-day fumigation across Ajah, Sangotedo, Badore, Addo and the surrounding estates — this is our home base.",
     context:
-      "Our office is on Angelica Avenue in GoodHomes Estate, so Ajah is the area we reach fastest. Rapid development here means a lot of properties sit next to cleared bush or active building sites, which pushes rodents and snakes toward occupied homes and makes perimeter treatment as important as indoor work.",
+      "Our office is at Renaissance Place in Good Homes Estate, so Ajah is the area we reach fastest. Rapid development here means a lot of properties sit next to cleared bush or active building sites, which pushes rodents and snakes toward occupied homes and makes perimeter treatment as important as indoor work.",
     common: ["Termites", "Rodents", "Cockroaches", "Perimeter and compound treatment"],
   },
   {

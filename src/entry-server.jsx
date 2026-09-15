@@ -7,6 +7,8 @@ import AppShell from "./AppShell";
 import { routes } from "./routes";
 import "./index.css";
 
+export { businessSchema } from "./businessSchema";
+
 /**
  * Renders one route to static HTML plus its Helmet tags, so social crawlers
  * (which never execute JavaScript) see the correct title, description and

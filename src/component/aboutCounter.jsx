@@ -4,7 +4,7 @@ import { Users, Clock, UserCheck } from "lucide-react";
 import { yearsOperating } from "../siteConfig";
 
 const stats = [
-  { icon: Users, label: "Clients served", value: 150, suffix: "+" },
+  { icon: Users, label: "Fumigation sessions", value: "10,000", suffix: "+" },
   { icon: Clock, label: "Years in business", value: yearsOperating, suffix: "+" },
   { icon: UserCheck, label: "Trained technicians", value: 7, suffix: "" },
 ];

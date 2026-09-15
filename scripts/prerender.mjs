@@ -22,7 +22,12 @@ if (!existsSync(ssrEntry)) {
   process.exit(1);
 }
 
-const { render } = await import(ssrEntry);
+const { render, businessSchema } = await import(ssrEntry);
+
+// "<" escaped so no value can ever close the script tag early.
+const businessJsonLd = `<script type="application/ld+json">${JSON.stringify(
+  businessSchema()
+).replace(/</g, "\\u003c")}</script>`;
 const { routePaths } = await import(join(root, "scripts", "routePaths.mjs"));
 
 const template = readFileSync(join(distDir, "index.html"), "utf8");
@@ -56,6 +61,8 @@ for (const route of targets) {
       // Helmet's tags win over the defaults already in the template.
       page = page.replace("</head>", `  ${head}\n  </head>`);
     }
+
+    page = page.replace("</head>", `  ${businessJsonLd}\n  </head>`);
 
     // Flat files (about.html, services/termite-treatment.html) rather than
     // about/index.html. Netlify serves a directory index only at the
