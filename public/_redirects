@@ -1,1 +1,11 @@
-/*    /index.html   200
+# Consolidate the old Netlify address onto the real domain.
+# Every econsultantsglobaltiija.netlify.app URL permanently redirects to the
+# same path on econsultantsglobaltiija.com.ng, so Google transfers the old
+# listings instead of keeping two copies of the site. The "!" forces the rule
+# even though a prerendered file exists at that path.
+# Deploy previews use a different hostname and are unaffected.
+https://econsultantsglobaltiija.netlify.app/*  https://econsultantsglobaltiija.com.ng/:splat  301!
+http://econsultantsglobaltiija.netlify.app/*   https://econsultantsglobaltiija.com.ng/:splat  301!
+
+# No SPA catch-all: every real page is prerendered to its own HTML file, and
+# anything else falls through to 404.html with a proper 404 status.

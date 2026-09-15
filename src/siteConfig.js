@@ -7,9 +7,9 @@ export const company = {
   legalName: "E Consultants Global Tiija LTD",
   tagline: "Licensed fumigation & pest control across Lagos.",
 
-  // TODO(owner): replace with your own domain once purchased, then re-run
-  // `npm run build` so canonicals, sitemap and social tags all follow.
-  url: "https://econsultantsglobaltiija.netlify.app",
+  // The canonical domain. Canonicals, og:url, the sitemap, robots.txt and
+  // the structured-data @id all derive from this — never hardcode the host.
+  url: "https://econsultantsglobaltiija.com.ng",
 
   phone: "+2349056981893",
   phoneDisplay: "0905 698 1893",

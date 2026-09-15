@@ -27,8 +27,14 @@ const { routePaths } = await import(join(root, "scripts", "routePaths.mjs"));
 
 const template = readFileSync(join(distDir, "index.html"), "utf8");
 
+// "/404" is not a real route: any unknown path renders <NotFound>, and the
+// result is written to 404.html, which Netlify serves with a genuine 404
+// status. Without it, unknown URLs returned the homepage with a 200 — a soft
+// 404 that Search Console flags and that can get junk URLs indexed.
+const targets = [...routePaths, "/404"];
+
 let ok = 0;
-for (const route of routePaths) {
+for (const route of targets) {
   try {
     const { html, head } = await render(route);
 
@@ -51,10 +57,15 @@ for (const route of routePaths) {
       page = page.replace("</head>", `  ${head}\n  </head>`);
     }
 
+    // Flat files (about.html, services/termite-treatment.html) rather than
+    // about/index.html. Netlify serves a directory index only at the
+    // trailing-slash URL, so /about answered with a 301 to /about/ — while
+    // every canonical, sitemap entry and internal link pointed at /about.
+    // A flat file lets /about respond 200 directly, so all signals agree.
     const outPath =
       route === "/"
         ? join(distDir, "index.html")
-        : join(distDir, route, "index.html");
+        : join(distDir, `${route.slice(1)}.html`);
 
     mkdirSync(dirname(outPath), { recursive: true });
     writeFileSync(outPath, page, "utf8");
@@ -68,4 +79,4 @@ for (const route of routePaths) {
 // The SSR bundle is a build artefact, not something to deploy.
 rmSync(join(root, "dist-ssr"), { recursive: true, force: true });
 
-console.log(`[prerender] ${ok}/${routePaths.length} routes prerendered`);
+console.log(`[prerender] ${ok}/${targets.length} pages written (incl. 404.html)`);
