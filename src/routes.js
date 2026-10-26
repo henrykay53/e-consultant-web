@@ -10,7 +10,6 @@ export const routes = [
   { path: "/services/:id", importer: () => import("./component/serviceDetails") },
   { path: "/areas", importer: () => import("./component/areas") },
   { path: "/areas/:id", importer: () => import("./component/areaDetail") },
-  { path: "/pricing", importer: () => import("./component/pricing") },
   { path: "/about", importer: () => import("./component/about") },
   { path: "/blog", importer: () => import("./component/blog") },
   { path: "/blog/:id", importer: () => import("./component/blogDetails") },

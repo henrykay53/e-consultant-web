@@ -9,3 +9,6 @@ http://econsultantsglobaltiija.netlify.app/*   https://econsultantsglobaltiija.c
 
 # No SPA catch-all: every real page is prerendered to its own HTML file, and
 # anything else falls through to 404.html with a proper 404 status.
+
+# The pricing page was removed; send old links and search results to contact.
+/pricing  /contact  301!

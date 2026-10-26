@@ -51,14 +51,6 @@ const NotFound = () => (
           ))}
           <li>
             <Link
-              to="/pricing"
-              className="group inline-flex items-center gap-1.5 font-semibold text-brand-700 hover:gap-2.5 transition-all"
-            >
-              Pricing &amp; instant quote <ArrowRight size={13} aria-hidden="true" />
-            </Link>
-          </li>
-          <li>
-            <Link
               to="/areas"
               className="group inline-flex items-center gap-1.5 font-semibold text-brand-700 hover:gap-2.5 transition-all"
             >

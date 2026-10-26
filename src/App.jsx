@@ -12,7 +12,7 @@ const RouteFallback = () => (
 
 export default function App() {
   // Each route is its own chunk, so a visitor who only wants the phone
-  // number no longer downloads the blog and the quote calculator too.
+  // number no longer downloads the blog too.
   const lazyRoutes = useMemo(
     () => routes.map((r) => ({ ...r, Component: lazy(r.importer) })),
     []

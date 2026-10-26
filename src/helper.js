@@ -27,7 +27,3 @@ export const trackWhatsApp = (source, params = {}) =>
 /** Someone submitted a quote request — the conversion that matters. */
 export const trackLead = (source, params = {}) =>
   logEvent("generate_lead", { currency: "NGN", source, ...params });
-
-/** Someone used the calculator. Useful for spotting price drop-off. */
-export const trackQuoteCalculated = (params = {}) =>
-  logEvent("quote_calculated", params);

@@ -37,7 +37,6 @@ export const staticPaths = [
   "/",
   "/services",
   "/areas",
-  "/pricing",
   "/about",
   "/blog",
   "/contact",

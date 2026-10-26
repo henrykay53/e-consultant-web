@@ -88,7 +88,7 @@ const ServiceDetail = () => {
                 {fromPrice.toLocaleString()}
               </strong>
               <Link
-                to="/pricing"
+                to="/contact"
                 className="block text-sm text-brand-700 underline underline-offset-4 decoration-brand-300"
               >
                 get an exact figure

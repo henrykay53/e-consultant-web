@@ -18,7 +18,6 @@ import { hoursSummary } from "./availability";
 const quickLinks = [
   { path: "/services", label: "Services" },
   { path: "/areas", label: "Areas we cover" },
-  { path: "/pricing", label: "Pricing" },
   { path: "/about", label: "About us" },
   { path: "/blog", label: "Blog" },
   { path: "/contact", label: "Contact" },

@@ -67,7 +67,7 @@ const CaseStudies = () => {
 
         <div className="text-center mt-10">
           <Link
-            to="/pricing"
+            to="/contact"
             className="inline-block px-7 py-3.5 rounded-xl bg-brand-600 text-white font-bold hover:bg-brand-700 shadow-lg shadow-brand-900/15 transition-colors"
           >
             Get a quote for your property

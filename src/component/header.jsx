@@ -9,7 +9,6 @@ import CallButton from "./callButton";
 const navLinks = [
   { label: "Services", path: "/services" },
   { label: "Areas", path: "/areas" },
-  { label: "Pricing", path: "/pricing" },
   { label: "About", path: "/about" },
   { label: "Blog", path: "/blog" },
   { label: "Contact", path: "/contact" },

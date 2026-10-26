@@ -50,10 +50,10 @@ const Testimonials = () => (
 
       <div className="mt-12 flex flex-col sm:flex-row gap-3 justify-center items-center">
         <Link
-          to="/pricing"
+          to="/contact"
           className="px-7 py-3.5 rounded-xl bg-brand-600 text-white font-bold hover:bg-brand-700 shadow-lg shadow-brand-900/15 transition-colors"
         >
-          See what it costs
+          Get a quote
         </Link>
 
         {company.googleReviewUrl && (

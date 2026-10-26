@@ -23,7 +23,7 @@ const today = new Date().toISOString().slice(0, 10);
 
 const priorityFor = (path) => {
   if (path === "/") return "1.0";
-  if (path === "/pricing" || path === "/contact") return "0.9";
+  if (path === "/contact") return "0.9";
   if (path.startsWith("/services") || path.startsWith("/areas")) return "0.8";
   if (path.startsWith("/blog/")) return "0.6";
   return "0.7";

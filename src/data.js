@@ -228,9 +228,7 @@ export const services = [
 
 /* ------------------------------------------------------------------ *
  * PRICING
- * These are the same figures the business was already using — only the
- * shape has changed, so the pricing page and the calculator can no
- * longer contradict each other. Both now read from this one object.
+ * The "from" figure on each service page is read from this object.
  * ------------------------------------------------------------------ */
 
 export const pricing = {
@@ -262,63 +260,10 @@ export const pricing = {
   perRoom: 5000,
 };
 
-export const houseTypeLabels = {
-  Apartment: "Apartment / Flat",
-  Bungalow: "Bungalow",
-  Duplex: "Duplex",
-  Mansion: "Mansion / Large home",
-  Warehouse: "Warehouse / Commercial",
-};
-
-export const fumigationTypeLabels = {
-  bbTreatment: "Bed Bug Treatment",
-  termiteTreatment: "Termite Treatment",
-  rodentTreatment: "Rodent Treatment",
-  cockroachTreatment: "Cockroach Treatment",
-};
-
 export const locationLabels = {
   lagosIsland: "Lagos Island",
   lagosMainland: "Lagos Mainland",
 };
-
-export const computeQuote = ({
-  houseType = "Apartment",
-  fumigationType = "bbTreatment",
-  location = "lagosIsland",
-  rooms = 0,
-} = {}) =>
-  (pricing.houseType[houseType] || 0) +
-  (pricing.fumigationType[fumigationType] || 0) +
-  (pricing.location[location] || 0) +
-  Math.max(0, rooms) * pricing.perRoom;
-
-// The pricing cards are derived from the calculator, not typed by hand,
-// so the two can never disagree again.
-export const pricingTiers = [
-  {
-    name: "Apartments & Bungalows",
-    from: computeQuote({ houseType: "Apartment" }),
-    description:
-      "Single-treatment fumigation for flats, self-contained apartments and bungalows.",
-    fits: ["1–3 bedrooms", "One treatment type", "Same-day slots often available"],
-  },
-  {
-    name: "Family Homes",
-    from: computeQuote({ houseType: "Duplex" }),
-    description:
-      "Duplexes and larger family homes, including compound and perimeter treatment.",
-    fits: ["3–5 bedrooms", "Indoor and outdoor coverage", "Child & pet safe options"],
-    highlight: true,
-  },
-  {
-    name: "Commercial & Warehouse",
-    from: computeQuote({ houseType: "Warehouse" }),
-    description:
-      "Warehouses, offices, schools, restaurants and estates — including out-of-hours work.",
-    fits: ["Scheduled or one-off", "Out-of-hours available", "Certificate of treatment"],
-  },
-];
 
 /* ------------------------------------------------------------------ *
  * SERVICE AREAS
